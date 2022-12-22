@@ -1,0 +1,22 @@
+{
+  "name": "shipcruisetour",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:tailwind":"tailwindcss build style.css -o build/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MHkif/ShipCruiseTour.git"
+  },
+  "author": "MHkif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MHkif/ShipCruiseTour/issues"
+  },
+  "homepage": "https://github.com/MHkif/ShipCruiseTour#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
