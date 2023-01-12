@@ -1,66 +1,16 @@
 <?php
-  class User {
-    private $db;
 
-    public function __construct(){
-      $this->db = new Database;
-    }
-
+abstract class User
+{
     // Regsiter user
-    public function register($data){
-      $this->db->query('INSERT INTO admin (email, username, password) VALUES(:email, :username :password)');
-      // Bind values
-      $this->db->bind(':email', $data['email']);
-      $this->db->bind(':username', $data['username']);
-      $this->db->bind(':password', $data['password']);
-
-      // Execute
-      if($this->db->execute()){
-        return true;
-      } else {
-        return false;
-      }
-    }
+    abstract public function register($data);
 
     // Login User
-    public function login($email, $password){
-      $this->db->query('SELECT * FROM admin WHERE email = :email');
-      $this->db->bind(':email', $email);
-
-      $row = $this->db->single();
-
-      $hashed_password = $row->password;
-      if(password_verify($password, $hashed_password)){
-        return $row;
-      } else {
-        return false;
-      }
-    }
+    abstract public function login($email, $password);
 
     // Find user by email
-    public function findUserByEmail($email){
-      $this->db->query('SELECT * FROM admin WHERE email = :email');
-      // Bind value
-      $this->db->bind(':email', $email);
-
-      $row = $this->db->single();
-
-      // Check row
-      if($this->db->rowCount() > 0){
-        return true;
-      } else {
-        return false;
-      }
-    }
+    abstract public function findUserByEmail($email);
 
     // Get User by ID
-    public function getUserById($id){
-      $this->db->query('SELECT * FROM admin WHERE id = :id');
-      // Bind value
-      $this->db->bind(':id', $id);
-
-      $row = $this->db->single();
-
-      return $row;
-    }
-  }
+    abstract public function getUserById($id);
+}

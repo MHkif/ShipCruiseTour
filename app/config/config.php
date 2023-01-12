@@ -3,9 +3,8 @@
   define('DB_HOST', 'localhost');
   define('DB_USER', 'root');
   define('DB_PASS', '');
-  define('DB_NAME', 'shiptour');
+  define('DB_NAME', 'shipcruise');
 
-  define('URLMIG', 'http://localhost/ShipCruiseTour/migrations/');
 
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));

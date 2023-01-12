@@ -1,367 +1,566 @@
-<!doctype html>
-<html>
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
+require APPROOT . '/views/includes/header.php';
+?>
+<!-- Hero section -->
 
-    <title>RoyalNorth</title>
 
-</head>
+<div class="h-auto w-full bg-center  bg-cover flex flex-col justify-center  md:h-screen " style="background-image: url('<?php echo URLROOT ?>./img/b1.jpg');
+font-family: 'Prosto One', cursive;">
 
-<body>
+    <div class="h-auto backdrop-grayscale-0 bg-blue-600/50 md:h-screen w-full bg-black-50 flex flex-col justify-center">
 
-    <!-- nav bar -->
-    <nav class="relative container mx-auto  p-6">
-        <!-- Flex Container -->
-        <div class="flex items-center justify-between px-8 md:px-4">
-            <!-- logo -->
-            <div class="pt-0 text-xl font-bold">
-                <h2>RoyalNorth</h2>
-            </div>
-            <!-- menu items -->
-            <div class="hidden sm:flex space-x-8">
-                <a href="#" class="hover:text-blue-800">Home</a>
-                <a href="cruise" class="hover:text-blue-800">Cruise</a>
-                <a href="#" class="hover:text-blue-800">Ship</a>
-                <a href="#" class="hover:text-blue-800">Destination</a>
-                <a href="#" class="hover:text-blue-800">Deals</a>
-                <a href="#" class="hover:text-blue-800">Contact</a>
-            </div>
-            <!-- Menu Button -->
-            <a href="#" class="hidden md:block p-3 px-6 pt-2 text-white bg-blue-600 rounded-full baseline hover:bg-gray-900">Sign in</a>
-        </div>
-    </nav>
-    <!-- Hero section -->
-    <section id="hero" class="px-12">
-        <!-- Flex container -->
-        <div class="container flex flex-col-reverse items-center px-6 mx-auto mt-10 space-y-0 md:flex-row md:space-y-0">
-            <!-- Left item -->
-            <div class="flex flex-col content-center mb-22 space-y-12 md:w-1/2">
-                <h1 class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left">
+        <div class="container p-12 max-w-screen-sm mx-auto px-4 sm:px-6 lg:px-8">
+
+
+            <!-- body  goes here -->
+            <div class="flex flex-col items-center space-y-6  md:space-y-10 ">
+                <h1 class="max-w-md text-3xl font-bold text-center md:text-6xl text-white">
                     We Take Care of Your Cruise
                 </h1>
-                <p class="max-w-sm text-center text-gray-300 md:text-left">
+                <!-- <p class="max-w-sm font-bold text-center text-white">
                     Explore a new world, no matter where in the world you want to go, we can help get you there .
-                </p>
-                <div class="flex justify-center md:justify-start">
-                    <a href="#" class="p-3 px-6 pt-2 text-white bg-blue-600 rounded-full baseline hover:bg-gray-900 md:block">Get Started</a>
+                </p> -->
+                <!-- <div class="flex justify-center ">
+                    <a href="#" class="p-3 px-6 pt-2 text-white bg-orange-500 rounded-full baseline hover:bg-gray-900 md:block">Book now</a>
 
-                </div>
-            </div>
-            <!-- image-->
-            <div class="md:w-1/2">
-                <img src="./src/img/cruise.jpg" alt="">
+                </div> -->
             </div>
         </div>
-    </section>
-    <!-- Reservation -->
-    <section id="reservation" class="my-24">
-        <div class="container flex flex-col items-center justify-center">
-            <h1 class="max-w-md text-1xl font-bold text-center md:text-3xl md:text-left">
-                Where You Wanna Go ?
-            </h1>
-            <div class="conatiner flex flex-col items-center justify-items-center px-6 my-8 gap-6 md:space-y-0 md:flex-row md:w-1/2 drop-shadow-lg">
-                <select id="cruising" class="bg-white border border-gray-100  text-gray-900 text-md rounded-lg focus:ring-gray-500 focus:border-gray-900block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Cruising To</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                </select>
-                <select id="departing" class="bg-white border border-gray-100  text-gray-900 text-md rounded-lg focus:ring-gray-500 focus:border-gray-900 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Departing Port</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                </select>
-                <select id="date" class="bg-white border border-gray-100  text-gray-900 text-md rounded-lg focus:ring-gray-500 focus:border-gray-900 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Check in & Out</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                </select>
+    </div>
+</div>
+<!-- Hero content goes here -->
 
 
+</div>
+<!-- Reservation -->
+<section id="reservation" class="px-4 sm:px-6 md:px-16 -mt-8 md:-mt-16">
+    <div class="container-fluid bg-white rounded-md drop-shadow-xl py-6 flex flex-col items-center justify-center gap-6">
 
-            </div>
-        </div>
-    </section>
-
-    <!-- Criuses -->
-    <section id="cruises_carousel" class="mt-10  mb-20 px-6 md:px-20">
-        <h1 class="max-w-md text-1xl font-bold text-center my-8 md:text-3xl md:text-left">
-            Explore the world with us
+        <h1 class="max-w-md text-1xl font-bold text-center md:text-2xl text-gray-800" style="font-family: 'Prosto One', cursive;">
+            Where You Wanna Go ?
         </h1>
-        <div id="animation-carousel" class="relative" data-carousel="static">
-            <!-- Carousel wrapper -->
-            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                <!-- Item 1 -->
-                <div class="hidden duration-200 ease-linear" data-carousel-item>
-                    <img src="./src/img/monaco.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                </div>
-                <!-- Item 2 -->
-                <div class=" duration-200 ease-linear" data-carousel-item>
-                    <img src="./src/img/hero.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                </div>
+        <div class="w-full flex flex-col md:flex-row flex-wrap justify-center items-center p-4 gap-4 md:gap-6">
 
-
-
+            <div class="flex flex-col w-full md:w-52 gap-2">
+            <label for="select cruise" class="text-base font-medium text-gray-800">Crusing To</label>
+                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
+                    <option selected>Destination</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
-            <!-- Slider controls -->
-            <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </span>
-            </button>
-            <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </span>
-            </button>
+
+            <div class="flex flex-col w-full md:w-52 gap-2">
+            <label for="select cruise" class="text-base font-medium text-gray-800">Departure From</label>
+                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
+
+                    <option selected>Departure Port</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+            <!-- <div class="mb-2 w-60 sm:w-96  md:w-52">
+                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
+
+                    <option selected>Departing Date</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div> -->
+
+            <div class="flex w-auto flex-col gap-2">
+            <label for="select date" class="text-base font-medium text-gray-800">Cruise Date</label>
+            <div class="flex flex-col md:flex-row w-full items-center justify-center md:w-auto gap-2 md:gap-4">
+                <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
+                    <input type="date" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
+                </div>
+                <span class="text-gray-500">to</span>
+                <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
+                    <input type="date" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
+                </div>
+            </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Search</button>
+            </div>
+
         </div>
+    </div>
+</section>
 
-    </section>
-
-    <!-- Criuses -->
-    <section id="cruisesl" class="mt-10  mb-20 px-6 md:px-14">
-        <h1 class="max-w-md text-1xl font-bold text-center my-8 md:text-3xl md:text-left">
-            Most Visited Destination
-        </h1>
-        <div class="container flex flex-col items-center justify-center gap-6  flex-wrap md:flex-row">
-            <div class="max-w-sm md:w-1/3 lg:w-1/4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg h-60" src="./src/img/barcelona.jpg" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="max-w-sm md:w-1/3 lg:w-1/4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg h-60 w-full" src="./src/img/monaco.jpg" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="max-w-sm md:w-1/3 lg:w-1/4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg h-60 w-full" src="./src/img/bahamas.jpg" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="max-w-sm md:w-1/3 lg:w-1/4 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                    <img class="rounded-t-lg h-60 w-full" src="./src/img/bahamas.jpg" alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Deals section -->
-    <section id="deals" class="px-8 mb-20 mt-10">
-        <!-- Flex container -->
-        <div class="container flex flex-col-reverse items-center px-6 mx-auto mt-10 gap-6 md:flex-row md:space-y-0">
-            <!-- Left item -->
-            <div class="flex flex-col content-center mb-22 space-y-12 md:w-1/2">
-                <h1 class="max-w-md text-2xl font-bold text-center md:text-3xl md:text-left">
-                    Hot deals of the year
-                </h1>
-                <p class="max-w-sm text-center text-gray-500 md:text-left">
-                    Everyone deserves a vacation. You'll find endless opportunities to make the most of every moment-like game-changing activities, world-class dining, show-stopping entertainment, and plenty of ways to unwind in the sun
-                </p>
-                <div class="flex justify-center md:justify-start">
-                    <a href="#" class="p-3 px-6 pt-2 text-white bg-gray-900 rounded-sm baseline hover:bg-gray-900 md:block">View More</a>
-
-                </div>
-            </div>
-            <!-- image-->
-            <div class="w-full md:w-1/2">
-                <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                    <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60 mb-4 sm:mb-0 md:mb-4 px-2">
-                        <a class="block w-full rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/bahamas.jpg);">
-
-                        </a>
+<!-- Inspirations -->
+<section id="cruises" class="flex flex-col items-center my-10 px-6 md:px-8 md:my-14" style="font-family: 'Prosto One', cursive;">
+    <h1 class="max-w-md text-1xl font-bold text-center text-gray-800 my-6 md:text-3xl md:my-8">
+        Destination Inspirations
+    </h1>
+    <div class="grid grid-cols-1 gap-4 w-full md:grid-cols-2 lg:grid-cols-4">
+        <div class=" w-full h-44 xl:h-64 mb-4 sm:mb-0 md:w-full md:mb-4 ">
+            <div class="relative overflow-hidden  w-full rounded h-full bg-no-repeat bg-center bg-cover" style="background-image: url(./src/img/bahamas.jpg);">
+                <div class="backdrop-grayscale-0 bg-black/30 absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed flex flex-col justify-center gap-4">
+                    <div class="">
+                        <p class="text-center text-white text-xs md:text-sm">PERFECT DAY AT COCOCAY</p>
+                        <p class="text-center text-white text-md  font-bold md:text-xl">WEEKEND GETAWAYS</p>
+                        <p class="text-center text-white text-xs font-extralight md:text-sm">STARTING FROM</p>
+                        <p class="text-center text-white text-sm font-bold">$240</p>
                     </div>
-                    <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60 px-2">
-                        <a class="block w-full rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/barcelona.jpg);">
-
-                        </a>
-                    </div>
-                    <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60 px-2">
-                        <a class="block w-full  rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/monaco.jpg);">
-
-                        </a>
-                    </div>
-                    <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60 px-2">
-                        <a class="block w-full  rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/canada.jpg);">
-
-                        </a>
+                    <div class="flex space-x-2 justify-center ">
+                        <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Book</button>
                     </div>
                 </div>
-
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section id="id" class="bg-blue-600">
-        <!-- Flex Conatiner -->
-        <div class="container flex flex-col items-center justify-between px-6 py-24 mx-auto space-y-12 md:py-12 md:flex-row md:space-y-0">
-            <!-- Heading -->
-            <h2 class="text-4xl font-bold leading-tight text-center text-white md:text-3xl md:max-w-xl md:text-left">
-                The Most Exciting Cruise Destinations And Award Winning Ships
-            </h2>
-            <div>
-                <a href="#" class=" p-3 px-6 pt-2 text-blue-600 bg-white rounded-full shadow-2xl  baseline hover:bg-gray-900 md:block">Get Started</a>
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-
-
-    <footer class="p-4 bg-gray-800 sm:p-6 dark:bg-gray-900">
-        <div class="md:flex md:justify-between">
-            <div class="mb-6 md:mb-0">
-                <a href="https://flowbite.com/" class="flex items-center">
-                    <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-8" alt="FlowBite Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">RoyalNorth</span>
-                </a>
-            </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase text-white">Resources</h2>
-                    <ul class="text-gray-300">
-                        <li class="mb-4">
-                            <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
-                        </li>
-                        <li>
-                            <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase text-white">Follow us</h2>
-                    <ul class="text-gray-300">
-                        <li class="mb-4">
-                            <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
-                        </li>
-                        <li>
-                            <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-100 uppercase text-white">Legal</h2>
-                    <ul class="text-gray-300">
-                        <li class="mb-4">
-                            <a href="#" class="hover:underline">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                        </li>
-                    </ul>
+        <div class=" w-full h-44 xl:h-64 mb-4 sm:mb-0 md:w-full md:mb-4 ">
+            <div class="relative overflow-hidden  w-full rounded h-full bg-no-repeat bg-center bg-cover" style="background-image: url(./src/img/barcelona.jpg);">
+                <div class="backdrop-grayscale-0 bg-black/30 absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed flex flex-col justify-center gap-4">
+                    <div class="" style="font-family: 'Prosto One', cursive;">
+                        <p class="text-center text-white text-xs md:text-sm">7 NIGHT</p>
+                        <p class="text-center text-white text-md font-bold  md:text-xl">CARIBBEAN CRUISES</p>
+                        <p class="text-center text-white text-xs md:text-sm">STARTING FROM $575</p>
+                    </div>
+                    <div class="flex space-x-2 justify-center ">
+                        <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Book</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <hr class="my-6  sm:mx-auto border-gray-700 lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
-            <span class="text-sm  sm:text-center text-gray-300">© 2022 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+        <div class=" w-full h-44 xl:h-64 mb-4 sm:mb-0 md:w-full md:mb-4 ">
+            <div class="relative overflow-hidden  w-full rounded h-full bg-no-repeat bg-center bg-cover" style="background-image: url(./src/img/monaco.jpg);">
+                <div class="backdrop-grayscale-0 bg-black/30 absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed flex flex-col justify-center gap-4">
+                    <div class="" style="font-family: 'Prosto One', cursive;">
+                        <p class="text-center text-white text-xs md:text-sm">COMING SOON</p>
+                        <p class="text-center text-white text-md font-bold md:text-xl">SAIL FROM NEW YORK</p>
+                        <p class="text-center text-white text-xs md:text-sm">STARTING FROM $840</p>
+                    </div>
+                    <div class="flex space-x-2 justify-center ">
+                        <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Book</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" w-full h-44 xl:h-64 mb-4 sm:mb-0 md:w-full md:mb-4 ">
+            <div class="relative overflow-hidden  w-full rounded h-full bg-no-repeat bg-center bg-cover" style="background-image: url(./src/img/canada.jpg);">
+                <div class="backdrop-grayscale-0 bg-black/30 absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed flex flex-col justify-center gap-4">
+                    <div class="" style="font-family: 'Prosto One', cursive;">
+                        <p class="text-center text-white text-xs md:text-sm">16 NIGHT</p>
+                        <p class="text-center text-white text-md font-bold md:text-xl">SAFI CRUISES</p>
+                        <p class="text-center text-white text-xs md:text-sm">STARTING FROM $240</p>
+                    </div>
+                    <div class="flex space-x-2 justify-center ">
+                        <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Book</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- Explore Criuses -->
+<section id="cruises_carousel" class="my-10 px-6 md:px-8  md:my-14" style="font-family: 'Prosto One', cursive;">
+    <h1 class="max-w-md text-1xl font-bold text-center my-6 md:text-3xl md:text-left md:my-8">
+        Explore the world with us
+    </h1>
+    <div id="animation-carousel" class="relative" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+            <!-- Item 1 -->
+            <div class="hidden duration-200 ease-linear" data-carousel-item>
+                <img src="./src/img/monaco.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class=" duration-200 ease-linear" data-carousel-item>
+                <img src="./src/img/hero.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+
+
+
+        </div>
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span class="sr-only">Previous</span>
             </span>
-            <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-                <a href="#" class="text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">Facebook page</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">Instagram page</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                    </svg>
-                    <span class="sr-only">Twitter page</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">GitHub account</span>
-                </a>
-                <a href="#" class="text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">Dribbbel account</span>
-                </a>
+        </button>
+        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+    </div>
+
+</section>
+
+
+
+<!-- Criuses -->
+<section id="cruises" class=" my-10 px-6 md:px-8  md:my-14" style="font-family: 'Prosto One', cursive;">
+    <h1 class="max-w-md text-1xl font-bold text-center my-6 md:text-3xl md:text-left md:my-8">
+        Most Visited Destination
+    </h1>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start  md:grid-cols-3 lg:grid-cols-4" >
+        <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+
+            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/barcelona.jpg" alt="" />
+
+            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
+
+                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
+
+                <div>
+                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
+                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
+
+                </div>
+                <div class="w-full flex items-align justify-center">
+                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                        Book now
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
-    </footer>
+        <div class="w-full  bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+
+            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/bahamas.jpg" alt="" />
 
 
+            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
 
-    <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script>
-</body>
+                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
 
-</html>
+                <div>
+                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
+                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
+
+                </div>
+                <div class="w-full flex items-align justify-center">
+                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                        Book now
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+
+            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/monaco.jpg" alt="" />
+
+
+            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
+
+                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
+
+                <div>
+                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
+                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
+
+                </div>
+                <div class="w-full flex items-align justify-center">
+                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                        Book now
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+
+            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/canada.jpg" alt="" />
+
+            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
+
+                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
+
+                <div>
+                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
+                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
+
+                </div>
+                <div class="w-full flex items-align justify-center">
+                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                        Book now
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Carousel -->
+
+<!-- <section>
+    <div class="flex">
+        <div class="w-10 flex items-center">
+            <div class="w-full text-right">
+                <button onclick="prev()" class="p-3 rounded-full bg-white border border-gray-100 shadow-lg mr-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="sliderContainer" class="w-10/12 overflow-hidden">
+            <ul id="slider" class="flex w-full">
+                <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg h-60" src="./src/img/barcelona.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology </h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Book now
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg h-60 w-full" src="./src/img/monaco.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Book now
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg h-60" src="./src/img/barcelona.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology </h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Book now
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg h-60 w-full" src="./src/img/monaco.jpg" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021.</p>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Book now
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+
+            </ul>
+        </div>
+        <div class="w-10 flex items-center">
+            <div class="w-full">
+                <button onclick="next()" class="p-3 rounded-full bg-white border border-gray-100 shadow-lg ml-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- Deals section -->
+<section id="deals" class="px-6 my-10 md:px-8 md:my-14" style="font-family: 'Prosto One', cursive;">
+    <!-- <h1 class="max-w-md text-1xl font-bold text-center my-6 md:text-3xl md:text-left md:my-8">
+        Get Royal Deals
+    </h1> -->
+    <!-- Flex container -->
+    <div class="container flex flex-col items-center mx-auto  gap-6 md:flex-row md:space-y-0">
+        <!-- Right item -->
+        <div class="flex flex-col content-center mb-22 space-y-12 md:w-1/2">
+            <h1 class="max-w-md text-xl font-bold text-center md:text-3xl md:text-left" style="font-family: 'Prosto One', cursive;">
+                Hot deals of the year
+            </h1>
+            <p class="max-w-sm text-center text-gray-500 md:text-left" style="font-family: 'Poppins', sans-serif;">
+                Everyone deserves a vacation. You'll find endless opportunities to make the most of every moment-like game-changing activities, world-class dining, show-stopping entertainment, and plenty of ways to unwind in the sun
+            </p>
+            <div class="flex justify-center md:justify-start">
+                <a href="#" class="p-3 px-6 pt-2 text-white bg-gray-900 rounded-sm baseline hover:bg-gray-900 md:block">View More</a>
+
+            </div>
+        </div>
+        <!-- images-->
+        <div class="w-full md:w-1/2">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60 sm:mb-0 ">
+                    <a class="block w-full rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/bahamas.jpg);">
+
+                    </a>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60">
+                    <a class="block w-full rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/barcelona.jpg);">
+
+                    </a>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60">
+                    <a class="block w-full  rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/monaco.jpg);">
+
+                    </a>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-full h-44 xl:h-60">
+                    <a class="block w-full  rounded h-full bg-grey-dark bg-no-repeat bg-center bg-cover" href="#" title="Link" style="background-image: url(./src/img/canada.jpg);">
+
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section id="id" class="block bg-white" style="font-family: 'Prosto One', cursive;">
+    <hr class="my-4 shadow-xl sm:mx-auto border-gray-200 lg:my-6" />
+
+
+    <div class="container flex flex-col items-center justify-between px-10 py-16 mx-auto space-y-12 md:py-8 md:flex-row md:space-y-0">
+        <h2 class="text-xl font-bold leading-tight text-center text-dark md:text-2xl xl:text-3xl md:max-w-xl md:text-left">
+            The Most Exciting Cruise Destinations And Award Winning Ships
+        </h2>
+        <div>
+            <div class="w-60 sm:w-96">
+                <label class="text-lg font-medium leading-5 text-gray-800 dark:text-white md:text-xl">Get Updates</label>
+                <div class="flex gap-4 mt-4">
+                    <input type="Email" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-orange-600 focus:outline-none" placeholder="Email" aria-label="Email" aria-describedby="button-addon2">
+                    <button class="btn inline-block px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-orange-600  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
+                        <!-- <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                    </svg> -->
+                        Send
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr class="my-4 shadow-xl sm:mx-auto border-gray-200 lg:my-6" />
+
+</section>
+
+
+<script>
+    // let defaultTransform = 0;
+
+    // function goNext() {
+    //     defaultTransform = defaultTransform - 398;
+    //     var slider = document.getElementById("slider");
+    //     if (Math.abs(defaultTransform) >= slider.scrollWidth / 1.7) defaultTransform = 0;
+    //     slider.style.transform = "translateX(" + defaultTransform + "px)";
+    // }
+    // next.addEventListener("click", goNext);
+
+    // function goPrev() {
+    //     var slider = document.getElementById("slider");
+    //     if (Math.abs(defaultTransform) === 0) defaultTransform = 0;
+    //     else defaultTransform = defaultTransform + 398;
+    //     slider.style.transform = "translateX(" + defaultTransform + "px)";
+    // }
+    // prev.addEventListener("click", goPrev);
+    let sliderContainer = document.getElementById('sliderContainer');
+    let slider = document.getElementById('slider');
+    let cards = slider.getElementsByTagName('li');
+
+    let elementsToShow = 3;
+    if (document.body.clientWidth < 1000) {
+        elementsToShow = 1;
+    } else if (document.body.clientWidth < 1500) {
+        elementsToShow = 2;
+    }
+
+
+    let sliderContainerWidth = sliderContainer.clientWidth;
+
+    let cardWidth = sliderContainerWidth / elementsToShow;
+
+    // slider.style.width = cards.length * cardWidth + 'px';
+    slider.style.transition = 'margin';
+    slider.style.transitionDuration = '1s';
+
+    for (let index = 0; index < cards.length; index++) {
+        const element = cards[index];
+        element.style.width = cardWidth + 'px';
+    }
+
+    function prev() {
+        if (+slider.style.marginLeft.slice(0, -2) != -cardWidth * (cards.length - elementsToShow))
+            slider.style.marginLeft = ((+slider.style.marginLeft.slice(0, -2)) - cardWidth) + 'px';
+    }
+
+    function next() {
+        if (+slider.style.marginLeft.slice(0, -2) != 0)
+            slider.style.marginLeft = ((+slider.style.marginLeft.slice(0, -2)) + cardWidth) + 'px';
+    }
+
+    function autoPlay() {
+        prev()
+
+        if (+slider.style.marginLeft.slice(0, -2) === -cardWidth * (cards.length - elementsToShow)) {
+            slider.style.marginLeft = "0px";
+        }
+
+        // setTimeout(() => {
+        //     autoPlay();
+        // }, 3000);
+    }
+
+    // setTimeout(() => {
+    //     autoPlay();
+    // }, 3000);
+</script>
+
+<?php
+
+require APPROOT . '/views/includes/footer.php';
+?>

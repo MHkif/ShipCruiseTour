@@ -5,24 +5,30 @@
     }
     
     public function index(){
-      if(isLoggedIn()){
-        redirect('posts');
-      }
+      // if(isLoggedIn()){
+      //   redirect('pages');
+      // }
 
       $data = [
-        // 'title' => 'SharePosts',
-        // 'description' => 'Simple social network built on the TraversyMVC PHP framework'
+        'title' => SITENAME,
       ];
      
       $this->view('pages/index', $data);
     }
 
-    public function about(){
+    public function cruise(){
       $data = [
-        'title' => 'About Us',
-        'description' => 'App to share posts with other users'
+        'title' => 'Find Cruises',
       ];
 
-      $this->view('pages/about', $data);
+      $this->view('pages/cruise', $data);
+    }
+    
+    public function destinations(){
+      $data = [
+        'title' => 'Destinations',
+      ];
+
+      $this->view('pages/destinations', $data);
     }
   }
