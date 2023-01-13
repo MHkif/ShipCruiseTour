@@ -31,8 +31,7 @@
                     <div class="block md:hidden gap-4 ">
 
 
-                        <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900  ring-1 ring-text-orange-400 ring-inset  hover:ring-gray-900">Log in</a>
-                        <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-text-orange-400 hover:ring-gray-900/20">Sign up</a>
+                        <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900  ring-1 ring-text-orange-400 ring-inset  hover:ring-gray-900">Logout</a>
 
 
                     </div>
@@ -45,11 +44,9 @@
         <div class="hidden md:flex gap-4 ">
 
 
-            <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Log in</a>
-            <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Sign up</a>
+            <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Logout</a>
 
 
         </div>
     </div>
 </nav>
-

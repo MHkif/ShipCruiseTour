@@ -7,17 +7,136 @@ class Admin extends Controller
     $this->adminModel = $this->model('Admins');
   }
 
-  public function dashboard(){
+  public function dashboard()
+  {
     // if(isLoggedIn()){
-      //   redirect('pages');
-      // }
+    //   redirect('pages');
+    // }
 
-      $data = [
-        'title' => SITENAME,
-      ];
-       
-      $this->view('admin/dashboard', $data);
-    }
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/dashboard', $data);
+  }
+  public function reservations()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/reservations', $data);
+  }
+
+  public function cruisePanel()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/cruisePanel', $data);
+  }
+
+  public function statistics()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/statistics', $data);
+  }
+
+  public function inboxPanel()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/inboxPanel', $data);
+  }
+
+  public function usersPanel()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/usersPanel', $data);
+  }
+
+  public function shipPanel()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/shipPanel', $data);
+  }
+
+  public function portPanel()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/portPanel', $data);
+  }
+
+  public function roomPanel()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/roomPanel', $data);
+  }
+
+  public function settings()
+  {
+    // if(isLoggedIn()){
+    //   redirect('pages');
+    // }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/settings', $data);
+  }
+ 
+
 
   public function register()
   {
@@ -129,10 +248,13 @@ class Admin extends Controller
         'email_err' => '',
         'password_err' => '',
       ];
+      // print_r($data);
+      // exit;
+    
 
       // Validate Email
       if (empty($data['email'])) {
-        $data['email_err'] = 'Pleae enter Email';
+        $data['email_err'] = 'Please enter Email';
       }
 
       // Validate Password
@@ -142,7 +264,7 @@ class Admin extends Controller
 
       // Check for user/email
       if ($this->adminModel->findUserByEmail($data['email'])) {
-        // User found
+        
       } else {
         // User not found
         $data['email_err'] = 'Admin Not Found';
@@ -156,15 +278,22 @@ class Admin extends Controller
 
         if ($loggedInUser) {
           // Create Session
-          $this->createUserSession($loggedInUser);
+          $checkUser = $this->adminModel->checkUser($loggedInUser->id);
+          if($checkUser){
+            $this->createAdminSession($loggedInUser);
+          }else{
+
+            $this->createUserSession($loggedInUser);
+          }
         } else {
           $data['password_err'] = 'Password incorrect';
 
-          $this->view('admin/login', $data);
+          // $this->view('admin/login', $data);
         }
       } else {
         // Load view with errors
-        $this->view('admin/login', $data);
+        // $this->view('admin/login', $data);
+        // Show Modal
       }
     } else {
       // Init data
@@ -176,7 +305,7 @@ class Admin extends Controller
       ];
 
       // Load view
-      $this->view('admin/login', $data);
+      // $this->view('admin/login', $data);
     }
   }
 
@@ -185,15 +314,37 @@ class Admin extends Controller
     $_SESSION['user_id'] = $user->id;
     $_SESSION['user_email'] = $user->email;
     $_SESSION['user_name'] = $user->name;
-    redirect('dashboard');
+    // redirect('dashboard');
   }
 
+  public function createAdminSession($user)
+  {
+    if($user->role){
+      $_SESSION['role'] = $user->role;
+      $_SESSION['admin_id'] = $user->id;
+      $_SESSION['admin_email'] = $user->email;
+      $_SESSION['admin_name'] = $user->name;
+      redirect('admin/dashboard');
+    }else{
+      die("Not an Admin");
+      exit;
+    }
+
+   
+  }
   public function logout()
   {
+    $checkUser = $this->adminModel->checkUser($loggedInUser->id);
+    if($checkUser){
+      $this->createAdminSession($loggedInUser);
+    }else{
+
+      $this->createUserSession($loggedInUser);
+    }
     unset($_SESSION['user_id']);
     unset($_SESSION['user_email']);
     unset($_SESSION['user_name']);
     session_destroy();
-    redirect('admin/login');
+    redirect('pages/');
   }
 }

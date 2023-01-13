@@ -11,13 +11,13 @@ class Admins
   // Regsiter user
   public function register($data)
   {
-    $this->db->query('INSERT INTO admin (fName, lName, email, username, password,) VALUES(:fName , lName,:email, :username :password)');
+    $this->db->query('INSERT INTO users (first_name, last_name, email, password, role) VALUES(:first_name , :last_name,:email, :password, :role)');
     // Bind values
-    $this->db->bind(':fName', $data['fName']);
-    $this->db->bind(':lName', $data['lName']);
+    $this->db->bind(':first_name', $data['fName']);
+    $this->db->bind(':last_name', $data['lName']);
     $this->db->bind(':email', $data['email']);
-    $this->db->bind(':username', $data['username']);
     $this->db->bind(':password', $data['password']);
+    $this->db->bind(':role', 0);
 
 
     // Execute
@@ -31,13 +31,14 @@ class Admins
   // Login User
   public function login($email, $password)
   {
-    $this->db->query('SELECT * FROM admin WHERE email = :email');
+    $this->db->query('SELECT * FROM users WHERE email = :email');
     $this->db->bind(':email', $email);
 
     $row = $this->db->single();
 
     $hashed_password = $row->password;
-    if (password_verify($password, $hashed_password)) {
+    // if (password_verify($password, $hashed_password)) {
+if($hashed_password == $password){
       return $row;
     } else {
       return false;
@@ -47,7 +48,7 @@ class Admins
   // Find user by email
   public function findUserByEmail($email)
   {
-    $this->db->query('SELECT * FROM admin WHERE email = :email');
+    $this->db->query('SELECT * FROM users WHERE email = :email');
     // Bind value
     $this->db->bind(':email', $email);
 
@@ -64,12 +65,27 @@ class Admins
   // Get User by ID
   public function getUserById($id)
   {
-    $this->db->query('SELECT * FROM admin WHERE id = :id');
+    $this->db->query('SELECT * FROM users WHERE id = :id');
     // Bind value
     $this->db->bind(':id', $id);
 
     $row = $this->db->single();
 
     return $row;
+  }
+
+  public function checkUser($id)
+  {
+    $this->db->query('SELECT * FROM users WHERE id = :id');
+    // Bind value
+    $this->db->bind(':id', $id);
+
+    $row = $this->db->single();
+
+    if($row->role == 1){
+      return 1;
+    }else{
+      return 0;
+    }
   }
 }
