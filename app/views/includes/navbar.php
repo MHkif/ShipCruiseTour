@@ -3,6 +3,12 @@
         <div class="flex items-center" aria-label="Home" role="img" style="font-family: 'Prosto One', cursive;">
             <img class="cursor-pointer w-8 sm:w-auto" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg1.svg" alt="logo" />
             <p class="ml-2 lg:ml-4 text-base lg:text-2xl font-bold text-dark dark:text-white">RoyalNorth</p>
+            
+            <?php if (isset($_SESSION['role'])) : ?>
+                        <?php if ($_SESSION['role']) : ?>
+                           <small class="mx-2" style="font-family: 'Courgette', cursive; "><?php echo ($_SESSION['admin_name']) ; ?></small>
+                        <?php endif; ?>
+                    <?php endif; ?>
         </div>
         <div>
             <button onclick="toggleMenu(true)" class=" dark:bg-white rounded sm:block md:hidden lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
@@ -25,21 +31,23 @@
                         <a href="<?php echo URLROOT ?>/pages/destinations">Destinations</a>
                     </li>
 
-                    <?php if (isset($_SESSION['admin_id'])) : ?>
-                        <li class="text-dark text-md hover:text-orange-400  cursor-pointer  py-4">
-                            <a href="<?php echo URLROOT ?>/admin/dashboard">Dashboard</a>
-                        </li>
+                    <?php if (isset($_SESSION['role'])) : ?>
+                        <?php if ($_SESSION['role']) : ?>
+                            <li class="text-dark text-md hover:text-orange-400  cursor-pointer  py-4">
+                                <a href="<?php echo URLROOT ?>/admin/dashboard">Dashboard</a>
+                            </li>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <div class="block md:hidden gap-4 ">
 
-                        <?php if (isset($_SESSION['user_id'])) : ?>
-                            <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900  ring-1 ring-text-orange-400 ring-inset  hover:ring-gray-900">Logout</a>
+                    <?php if (isset($_SESSION['user_id']) or isset($_SESSION['admin_id'])) : ?>
+                <a href="<?php echo URLROOT ?>/user/logout" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Logout</a>
 
-                        <?php else : ?>
-                            <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900  ring-1 ring-text-orange-400 ring-inset  hover:ring-gray-900">Log in</a>
-                            <a href="#" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-text-orange-400 hover:ring-gray-900/20">Sign up</a>
+            <?php else : ?>
+                <a class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" data-modal-target="Login-modal" data-modal-toggle="Login-modal" type="button">Log in</a>
+                <a data-modal-hide="Login-modal" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" data-modal-target="register-modal" data-modal-toggle="register-modal" type="button">Sign up</a>
 
-                        <?php endif; ?>
+            <?php endif; ?>
 
 
                     </div>
@@ -51,15 +59,15 @@
         </div>
         <div class="hidden md:flex gap-4 ">
 
-        <?php if (isset($_SESSION['user_id'])) : ?>
-                            <a href="<?php echo URLROOT?>/admin/logout" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Logout</a>
+            <?php if (isset($_SESSION['user_id']) or isset($_SESSION['admin_id'])) : ?>
+                <a href="<?php echo URLROOT ?>/user/logout" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Logout</a>
 
-                        <?php else : ?>
-                            <a class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" data-modal-target="Login-modal" data-modal-toggle="Login-modal" type="button">Log in</a>
-                        <a  class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" data-modal-target="register-modal" data-modal-toggle="register-modal" type="button">Sign up</a>
+            <?php else : ?>
+                <a class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" data-modal-target="Login-modal" data-modal-toggle="Login-modal" type="button">Log in</a>
+                <a data-modal-hide="Login-modal" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" data-modal-target="register-modal" data-modal-toggle="register-modal" type="button">Sign up</a>
 
-                        <?php endif; ?>
-                   
+            <?php endif; ?>
+
 
         </div>
     </div>
@@ -82,7 +90,7 @@
                         <img class="cursor-pointer w-8 sm:w-auto" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg1.svg" alt="logo" />
                         <p class="ml-2 lg:ml-4 text-base  font-bold text-dark dark:text-white">RoyalNorth</p>
                     </div>
-                    <form class="space-y-6" action="admin/login" method="POST">
+                    <form class="space-y-6" action="user/login" method="POST">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required>
@@ -100,9 +108,9 @@
                             </div>
                             <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
                         </div>
-                        <button type="submit" class="w-full text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login to your account</button>
+                        <button type="submit" class="w-full text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login</button>
                         <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                            Not registered? <a class="text-orange-700 hover:underline" data-modal-target="register-modal" data-modal-toggle="register-modal" type="button">Create account</a>
+                            Not registered? <a data-modal-hide="Login-modal" class="text-orange-700 hover:underline" data-modal-target="register-modal" data-modal-toggle="register-modal" type="button">Create account</a>
                         </div>
                     </form>
                 </div>

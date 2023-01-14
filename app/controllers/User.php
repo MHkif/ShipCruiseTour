@@ -1,5 +1,5 @@
 <?php
-class Admin extends Controller
+class User extends Controller
 {
   private $userModel;
   public function __construct()
@@ -19,122 +19,7 @@ class Admin extends Controller
 
     $this->view('admin/dashboard', $data);
   }
-  public function reservations()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/reservations', $data);
-  }
-
-  public function cruisePanel()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/cruisePanel', $data);
-  }
-
-  public function statistics()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/statistics', $data);
-  }
-
-  public function inboxPanel()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/inboxPanel', $data);
-  }
-
-  public function usersPanel()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/usersPanel', $data);
-  }
-
-  public function shipPanel()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/shipPanel', $data);
-  }
-
-  public function portPanel()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/portPanel', $data);
-  }
-
-  public function roomPanel()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/roomPanel', $data);
-  }
-
-  public function settings()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/settings', $data);
-  }
+  
 
 
 
@@ -329,7 +214,7 @@ class Admin extends Controller
       $_SESSION['role'] = $user->role;
       $_SESSION['admin_id'] = $user->id;
       $_SESSION['admin_email'] = $user->email;
-      $_SESSION['admin_name'] = $user->name;
+      $_SESSION['admin_name'] = $user->first_name;
       redirect('admin/dashboard');
     } else {
       //   echo '<pre>';
@@ -340,7 +225,7 @@ class Admin extends Controller
       $_SESSION['role'] = $user->role;
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
-      $_SESSION['user_name'] = $user->name;
+      $_SESSION['user_name'] = $user->first_name;
       redirect('pages');
     }
   }

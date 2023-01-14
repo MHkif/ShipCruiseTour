@@ -1,6 +1,6 @@
 <?php
 
-class Clients extends User{
+class Clients extends UserModel{
     private $db;
 
     public function __construct(){
@@ -66,4 +66,6 @@ class Clients extends User{
 
       return $row;
     }
+
+    
 }

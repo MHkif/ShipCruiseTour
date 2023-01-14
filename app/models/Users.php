@@ -1,5 +1,5 @@
 <?php
-class Admins
+class Users extends UserModel 
 {
   private $db;
 

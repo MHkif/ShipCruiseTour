@@ -1,17 +1,19 @@
 <?php
   class Pages extends Controller {
+    private $dataModel;
     public function __construct(){
-     
+      $this->dataModel = $this->model('DataModel');
     }
     
     public function index(){
-      // if(isLoggedIn()){
-      //   redirect('pages');
-      // }
-
+      $destinations = $this->dataModel->getData("destinations");
+      $ports = $this->dataModel->getData("port");
       $data = [
         'title' => SITENAME,
+        'destinations' => $destinations,
+        'ports' => $ports,
       ];
+
      
       $this->view('pages/index', $data);
     }

@@ -44,22 +44,22 @@ font-family: 'Prosto One', cursive;">
 
             <div class="flex flex-col w-full md:w-52 gap-2">
             <label for="select cruise" class="text-base font-medium text-gray-800">Crusing To</label>
-                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
-                    <option selected>Destination</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+               
+            <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="Destination" aria-label="Default select example">
+                <?php foreach ($data['destinations'] as $destination) : ?>
+                    <option value="<?php echo $destination->id?>"><?php echo $destination->name?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="flex flex-col w-full md:w-52 gap-2">
             <label for="select cruise" class="text-base font-medium text-gray-800">Departure From</label>
                 <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
+                <?php foreach ($data['ports'] as $port) : ?>
 
-                    <option selected>Departure Port</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    
+                    <option value="<?php echo $port->id?>"><?php echo $port->name?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
@@ -86,7 +86,7 @@ font-family: 'Prosto One', cursive;">
             </div>
             </div>
 
-            <div class="flex justify-end">
+            <div class="flex md:self-end pb-0.5">
                 <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Search</button>
             </div>
 

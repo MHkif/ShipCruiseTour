@@ -1,6 +1,6 @@
 <?php
 
-abstract class User
+abstract class UserModel
 {
     // Regsiter user
     abstract public function register($data);

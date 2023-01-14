@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 12 jan. 2023 à 19:35
+-- Généré le : sam. 14 jan. 2023 à 17:53
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 7.4.30
 
@@ -41,6 +41,29 @@ CREATE TABLE `cruise` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `destinations`
+--
+
+CREATE TABLE `destinations` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `destinations`
+--
+
+INSERT INTO `destinations` (`id`, `name`) VALUES
+(1, 'Aalsak'),
+(4, 'Australia & New Zealand'),
+(5, 'Bahamas'),
+(6, 'Canada & New England'),
+(7, 'Africa, Middle East & Indian Ocean'),
+(8, 'Asia');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `itinerary`
 --
 
@@ -61,6 +84,14 @@ CREATE TABLE `port` (
   `name` varchar(40) NOT NULL,
   `country` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `port`
+--
+
+INSERT INTO `port` (`id`, `name`, `country`) VALUES
+(1, 'Sounthampton', 'England'),
+(2, 'Paris(Le Havre)', 'France');
 
 -- --------------------------------------------------------
 
@@ -137,9 +168,16 @@ CREATE TABLE `users` (
   `last_name` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
   `password` varchar(40) NOT NULL,
-  `role` varchar(40) NOT NULL,
-  `cruise_id` int(11) NOT NULL
+  `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES
+(1, 'Abdelmalek', 'Achkif', 'mhkif@gmail.com', 'azertyuio', 1),
+(2, 'Abdel', 'Malek', 'hkif@gmail.com', 'aqwzsx', 0);
 
 --
 -- Index pour les tables déchargées
@@ -152,6 +190,12 @@ ALTER TABLE `cruise`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ship_id` (`ship_id`),
   ADD KEY `port_id` (`port_id`);
+
+--
+-- Index pour la table `destinations`
+--
+ALTER TABLE `destinations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `itinerary`
@@ -199,8 +243,7 @@ ALTER TABLE `ship`
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cruise_id` (`cruise_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -213,6 +256,12 @@ ALTER TABLE `cruise`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `destinations`
+--
+ALTER TABLE `destinations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT pour la table `itinerary`
 --
 ALTER TABLE `itinerary`
@@ -222,7 +271,7 @@ ALTER TABLE `itinerary`
 -- AUTO_INCREMENT pour la table `port`
 --
 ALTER TABLE `port`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
@@ -252,7 +301,7 @@ ALTER TABLE `ship`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
@@ -285,10 +334,6 @@ ALTER TABLE `reservation`
 ALTER TABLE `room`
   ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`room_type_id`) REFERENCES `room_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `room_ibfk_2` FOREIGN KEY (`ship_id`) REFERENCES `ship` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `users`
---
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
