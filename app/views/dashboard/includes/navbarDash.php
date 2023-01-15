@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4 py-1 flex items-center justify-between">
         <div class="flex items-center" aria-label="Home" role="img" style="font-family: 'Prosto One', cursive;">
             <img class="cursor-pointer w-8 sm:w-auto" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg1.svg" alt="logo" />
-            <p class="ml-2 lg:ml-4 text-base lg:text-2xl font-bold text-dark dark:text-white">RoyalNorth</p>
+            <p class="ml-2 lg:ml-3 text-base lg:text-2xl font-bold text-dark dark:text-white">RoyalNorth</p>
         </div>
         <div>
             <button onclick="toggleMenu(true)" class=" dark:bg-white rounded sm:block md:hidden lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">

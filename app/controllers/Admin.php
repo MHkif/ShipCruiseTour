@@ -2,10 +2,13 @@
 class Admin extends Controller
 {
   private $userModel;
+  private $dataModel;
   public function __construct()
   {
+    $this->dataModel = $this->model('DataModel');
     $this->userModel = $this->model('Users');
   }
+  
 
   public function dashboard()
   {
@@ -38,8 +41,16 @@ class Admin extends Controller
       redirect('pages/');
     }
 
+    $ships = $this->dataModel->getData("ship");
+    $rooms = $this->dataModel->getData("room");
+    // $room_types = $this->dataModel->getData("room_type", $room, $type);
+    $ports = $this->dataModel->getData("port");
     $data = [
       'title' => SITENAME,
+      'ships' => $ships,
+      'rooms' => $rooms,
+      // 'room_type' => $room_types;
+      'ports' => $ports,
     ];
 
     $this->view('admin/cruisePanel', $data);

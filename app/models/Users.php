@@ -13,8 +13,8 @@ class Users extends UserModel
   {
     $this->db->query('INSERT INTO users (first_name, last_name, email, password, role) VALUES(:first_name , :last_name,:email, :password, :role)');
     // Bind values
-    $this->db->bind(':first_name', $data['fName']);
-    $this->db->bind(':last_name', $data['lName']);
+    $this->db->bind(':first_name', $data['first_name']);
+    $this->db->bind(':last_name', $data['last_name']);
     $this->db->bind(':email', $data['email']);
     $this->db->bind(':password', $data['password']);
     $this->db->bind(':role', 0);

@@ -17,5 +17,14 @@ class DataModel{
 
         return $results;
     }
+
+    public function getDataById($table){
+      $sql = "SELECT * FROM ". $table;
+      $this->db->query($sql);
+
+      $results = $this->db->resultSet();
+
+      return $results;
+  }
 }
 

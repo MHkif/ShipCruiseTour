@@ -149,25 +149,21 @@
                 </th> -->
 
                     <th scope="col" class="px-6 py-3">
-                        Ship
+                        Client Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        price
+                        Cruise
+                    </th>
+                   
+                    <th scope="col" class="px-6 py-3">
+                        Reservation Date
+                    </th>
+                   
+                    <th scope="col" class="px-6 py-3">
+                        Price
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        image
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Number of nights
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Derparture Port
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Itinerary
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Derparture Date
+                        Room 
                     </th>
 
                     <th scope="col" class="px-6 py-3">
@@ -184,26 +180,22 @@
                     </div>
                 </td> -->
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        ALLURE OF SEAS
+                        Abdelmalek Achkif
                     </th>
                     <td class="px-6 py-4">
-                        $349 * 3
+                        Incredable Way
                     </td>
                     <td class="px-6 py-4">
-                        image
+                    Fri, jan 19, 2023
+
                     </td>
                     <td class="px-6 py-4">
-                        3 Nights
+                        $5,450
                     </td>
                     <td class="px-6 py-4">
-                        Orlando (Port Canaveral), Florida
+45
                     </td>
-                    <td class="px-6 py-4">
-                        Orlando (Port Canaveral), FloridaNassau, BahamasPerfect Day at CocoCay, BahamasOrlando (Port Canaveral), Florida
-                    </td>
-                    <td class="px-6 py-4">
-                        Fri, jan 19, 2023
-                    </td>
+                   
                     <td class="flex items-center px-6 py-4 space-x-3">
                         <!-- <a href="#" class="font-medium text-green-600 dark:text-blue-500 hover:underline">Edit</a> -->
                         <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Cancel</a>

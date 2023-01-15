@@ -7,20 +7,6 @@ class User extends Controller
     $this->userModel = $this->model('Users');
   }
 
-  public function dashboard()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/dashboard', $data);
-  }
-  
-
 
 
   public function register()
@@ -35,13 +21,13 @@ class User extends Controller
 
       // Init data
       $data = [
-        'fName' => trim($_POST['fName']),
-        'lName' => trim($_POST['lName']),
+        'first_name' => trim($_POST['first_name']),
+        'last_name' => trim($_POST['last_name']),
         'email' => trim($_POST['email']),
         'password' => trim($_POST['password']),
         'confirm_password' => trim($_POST['confirm_password']),
-        'fName_err' => '',
-        'lName_err' => '',
+        'first_name_err' => '',
+        'last_name_err' => '',
         'email_err' => '',
         'password_err' => '',
         'confirm_password_err' => ''
@@ -54,27 +40,28 @@ class User extends Controller
         // Check email
         if ($this->userModel->findUserByEmail($data['email'])) {
           $data['email_err'] = 'Email is already taken';
+          echo "Email is already taken";
         }
       }
 
       // Validate Name
-      if (empty($data['fName'])) {
-        $data['fName_err'] = 'Please enter your First Name';
+      if (empty($data['first_name'])) {
+        $data['first_name_err'] = 'Please enter your First Name';
       }
-      if (empty($data['lName'])) {
-        $data['lName_err'] = 'Please enter your Last Name';
+      if (empty($data['last_name'])) {
+        $data['last_name_err'] = 'Please enter your Last Name';
       }
 
       // Validate Password
       if (empty($data['password'])) {
-        $data['password_err'] = 'Pleae enter Password';
+        $data['password_err'] = 'Please enter a Password';
       } elseif (strlen($data['password']) < 6) {
         $data['password_err'] = 'Password must be at least 6 characters';
       }
 
       // Validate Confirm Password
       if (empty($data['confirm_password'])) {
-        $data['confirm_password_err'] = 'Pleae Confirm Password';
+        $data['confirm_password_err'] = 'Please Confirm your Password';
       } else {
         if ($data['password'] != $data['confirm_password']) {
           $data['confirm_password_err'] = 'Passwords do not match';
@@ -82,7 +69,7 @@ class User extends Controller
       }
 
       // Make sure errors are empty
-      if (empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
+      if (empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
         // Validated
 
         // Hash Password
@@ -91,30 +78,34 @@ class User extends Controller
         // Register User
         if ($this->userModel->register($data)) {
           flash('register_success', 'You are registered and can log in');
-          redirect('admin/login');
+          redirect('pages');
         } else {
-          die('Something went wrong');
+          var_dump('Something went wrong, User Not Registered');
         }
       } else {
         // Load view with errors
-        $this->view('admin/register', $data);
+        // $this->view('admin/register', $data);
+        var_dump('Something went wrong, Load view with errors');
+        // redirect('pages/');
+        // Show Modal
       }
     } else {
       // Init data
       $data = [
-        'fName' => '',
-        'lName' => '',
+        'first_name' => '',
+        'last_name' => '',
         'email' => '',
         'password' => '',
         'confirm_password' => '',
-        'name_err' => '',
+        'first_name_err' => '',
+        'last_name_err' => '',
         'email_err' => '',
         'password_err' => '',
         'confirm_password_err' => ''
       ];
-
+      var_dump('Load the Else view, that must be removed');
       // Load view
-      $this->view('admin/register', $data);
+      // $this->view('pages', $data);
     }
   }
 
@@ -168,7 +159,7 @@ class User extends Controller
 
         if ($loggedInUser) {
           // Create Session
-
+          // die('Yes Matched Passwords');
           $this->createUserSession($loggedInUser);
         } else {
           $data['password_err'] = 'Password incorrect';

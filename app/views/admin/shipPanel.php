@@ -54,15 +54,15 @@
                             </a>
                         </li>
 
-                        <li class="p-0.2 bg-orange-500 rounded">
-                            <a href="<?php echo URLROOT ?>/admin/cruisePanel" class="flex items-center p-2 text-base font-medium text-white rounded dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <svg aria-hidden="true" class="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <li >
+                            <a href="<?php echo URLROOT ?>/admin/cruisePanel" class="flex items-center p-2 text-base font-normal text-gray-900 rounded dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="flex-1 ml-3 whitespace-nowrap">Cruises</span>
                             </a>
                         </li>
-                        
+                       
                         <li>
                             <a href="<?php echo URLROOT ?>/admin/roomPanel" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -79,9 +79,10 @@
                         </a>
                         </li>
 
-                        <li>
-                            <a href="<?php echo URLROOT ?>/admin/shipPanel" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                       
+                        <li class="p-0.2 bg-orange-500 rounded">
+                            <a href="<?php echo URLROOT ?>/admin/shipPanel" class="flex items-center p-2 text-base font-medium text-white rounded dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <svg aria-hidden="true" class="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="flex-1 ml-3 whitespace-nowrap">Ships</span>
@@ -125,21 +126,21 @@
             <main class="ml-64 flex-1 overflow-x-scroll px-4 ">
                 <div class="flex items-center justify-between py-7 px-2">
                     <div>
-                        <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Cruises</h1>
+                        <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Ships</h1>
 
 
                     </div>
-                    <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-orange-600 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1" data-modal-target="cruise-modal" data-modal-toggle="cruise-modal" type="button">
+                    <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-orange-600 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1" data-modal-target="ship-modal" data-modal-toggle="ship-modal" type="button">
 
-                        <span class="text-sm font-semibold tracking-wide">Create Cruise</span>
+                        <span class="text-sm font-semibold tracking-wide">Create Ship</span>
                     </button>
 
                     <!-- Cruise Modal -->
-        <div id="cruise-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+        <div id="ship-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
             <div class="relative w-full h-full max-w-md md:h-auto">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="cruise-modal">
+                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="ship-modal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                         </svg>
@@ -148,7 +149,7 @@
                     <div class="px-4 py-8 lg:px-6 flex flex-col gap-8">
                         <!-- <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3> -->
                         <div class="flex items-center justify-center" aria-label="Home" role="img" style="font-family: 'Prosto One', cursive;">
-                            <p class="ml-2  text-base  font-bold text-dark dark:text-white">Create New Cruise</p>
+                            <p class="ml-2  text-base  font-bold text-dark dark:text-white">Create New Ship</p>
                         </div>
                         <form class="space-y-4" action="admin/createCruise" method="POST" enctype="">
                             <div class="w-full flex gap-4">
@@ -159,29 +160,14 @@
                                 </div>
                                 <div class = "w-full">
                                     <label for="ship" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ship name</label>
-                                    <!-- <input type="text" name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ship name" required> -->
-                                    <select name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
-                                    <option value="" disabled selected>Ship name</option>    
-                                    <?php foreach ($data['ships'] as $ship) : ?>
+                                    <input type="text" name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ship name" required>
 
-                                            
-                                            <option value="<?php echo $ship->id?>"><?php echo $ship->name?></option>
-                                            <?php endforeach; ?>
-                                        </select>
                                 </div>
                             </div>
                             <div class="w-full flex gap-4">
                                 <div class = "w-full">
                                     <label for="port_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Port</label>
-                                    <!-- <input type="text" name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Port name" required> -->
-                                    <select name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
-                                    <option value="" disabled selected>Port name</option>    
-                                    <?php foreach ($data['ports'] as $port) : ?>
-
-                                            
-                                            <option value="<?php echo $port->id?>"><?php echo $port->name?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                    <input type="text" name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Port name" required>
                                 </div>
                                     <div class = "w-full">
                                         <label for="date_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Date</label>
@@ -199,7 +185,7 @@
                                     <?php foreach ($data['rooms'] as $room) : ?>
 
                                             
-                                            <option value="<?php echo $room->id?>"><?php echo $room->room_type_id?></option>
+                                            <option value="<?php echo $room->id?>"><?php echo $room->name?></option>
                                             <?php endforeach; ?>
                                         </select>
                                 </div>
@@ -256,25 +242,13 @@
                     </th> -->
 
                             <th scope="col" class="px-6 py-3">
-                                Ship
+                                Ship name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                price
+                                Rooms Number
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                image
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Number of nights
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Derparture Port
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Itinerary
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Derparture Date
+                                Places Number
                             </th>
 
                             <th scope="col" class="px-6 py-3">
@@ -291,26 +265,17 @@
                         </div>
                     </td> -->
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                ALLURE OF SEAS
+                                Canaveral
                             </th>
+                           
                             <td class="px-6 py-4">
-                                $349 * 3
+                                120
                             </td>
+                           
                             <td class="px-6 py-4">
-                                image
+                                450
                             </td>
-                            <td class="px-6 py-4">
-                                3 Nights
-                            </td>
-                            <td class="px-6 py-4">
-                                Orlando (Port Canaveral), Florida
-                            </td>
-                            <td class="px-6 py-4">
-                                Orlando (Port Canaveral), FloridaNassau, BahamasPerfect Day at CocoCay, BahamasOrlando (Port Canaveral), Florida
-                            </td>
-                            <td class="px-6 py-4">
-                                Fri, jan 19, 2023
-                            </td>
+                            
                             <td class="flex items-center px-6 py-4 space-x-3">
                                 <!-- <a href="#" class="font-medium text-green-600 dark:text-blue-500 hover:underline">Edit</a> -->
                                 <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Cancel</a>

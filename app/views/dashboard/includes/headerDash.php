@@ -24,7 +24,7 @@
 </head>
 
 <body>
-  <!-- <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script> -->
+  <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
 
   <?php require APPROOT . '/views/dashboard/includes/navbarDash.php'; ?>
 

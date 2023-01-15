@@ -53,24 +53,24 @@
                                 <span class="flex-1 ml-3 whitespace-nowrap">Reservations</span>
                             </a>
                         </li>
-
-                        <li class="p-0.2 bg-orange-500 rounded">
-                            <a href="<?php echo URLROOT ?>/admin/cruisePanel" class="flex items-center p-2 text-base font-medium text-white rounded dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <svg aria-hidden="true" class="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <li>
+                            <a href="<?php echo URLROOT ?>/admin/cruisePanel" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="flex-1 ml-3 whitespace-nowrap">Cruises</span>
                             </a>
                         </li>
-                        
-                        <li>
-                            <a href="<?php echo URLROOT ?>/admin/roomPanel" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <li class="p-0.2 bg-orange-500 rounded">
+                            <a href="<?php echo URLROOT ?>/admin/roomPanel" class="flex items-center p-2 text-base font-medium text-white rounded dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <svg aria-hidden="true" class="w-6 h-6 text-white transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="flex-1 ml-3 whitespace-nowrap">Rooms</span>
                             </a>
                         </li>
+                        
+                       
                         <a href="<?php echo URLROOT ?>/admin/usersPanel" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                             <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
@@ -125,13 +125,13 @@
             <main class="ml-64 flex-1 overflow-x-scroll px-4 ">
                 <div class="flex items-center justify-between py-7 px-2">
                     <div>
-                        <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Cruises</h1>
+                        <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Rooms</h1>
 
 
                     </div>
                     <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-orange-600 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1" data-modal-target="cruise-modal" data-modal-toggle="cruise-modal" type="button">
 
-                        <span class="text-sm font-semibold tracking-wide">Create Cruise</span>
+                        <span class="text-sm font-semibold tracking-wide">Create Room</span>
                     </button>
 
                     <!-- Cruise Modal -->
@@ -159,29 +159,14 @@
                                 </div>
                                 <div class = "w-full">
                                     <label for="ship" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ship name</label>
-                                    <!-- <input type="text" name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ship name" required> -->
-                                    <select name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
-                                    <option value="" disabled selected>Ship name</option>    
-                                    <?php foreach ($data['ships'] as $ship) : ?>
+                                    <input type="text" name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ship name" required>
 
-                                            
-                                            <option value="<?php echo $ship->id?>"><?php echo $ship->name?></option>
-                                            <?php endforeach; ?>
-                                        </select>
                                 </div>
                             </div>
                             <div class="w-full flex gap-4">
                                 <div class = "w-full">
                                     <label for="port_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Port</label>
-                                    <!-- <input type="text" name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Port name" required> -->
-                                    <select name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
-                                    <option value="" disabled selected>Port name</option>    
-                                    <?php foreach ($data['ports'] as $port) : ?>
-
-                                            
-                                            <option value="<?php echo $port->id?>"><?php echo $port->name?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                    <input type="text" name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Port name" required>
                                 </div>
                                     <div class = "w-full">
                                         <label for="date_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Date</label>
@@ -199,7 +184,7 @@
                                     <?php foreach ($data['rooms'] as $room) : ?>
 
                                             
-                                            <option value="<?php echo $room->id?>"><?php echo $room->room_type_id?></option>
+                                            <option value="<?php echo $room->id?>"><?php echo $room->name?></option>
                                             <?php endforeach; ?>
                                         </select>
                                 </div>
@@ -259,23 +244,19 @@
                                 Ship
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                price
+                                Room Number
+                            </th>
+                            
+                            <th scope="col" class="px-6 py-3">
+                               Room Type
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                image
+                                Price
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Number of nights
+                                Room Capacity
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Derparture Port
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Itinerary
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Derparture Date
-                            </th>
+                           
 
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -293,24 +274,20 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 ALLURE OF SEAS
                             </th>
+                            
                             <td class="px-6 py-4">
-                                $349 * 3
+                                56
                             </td>
                             <td class="px-6 py-4">
-                                image
+                                SOLO
                             </td>
                             <td class="px-6 py-4">
-                                3 Nights
+                               $349
                             </td>
                             <td class="px-6 py-4">
-                                Orlando (Port Canaveral), Florida
+                                1 Guest
                             </td>
-                            <td class="px-6 py-4">
-                                Orlando (Port Canaveral), FloridaNassau, BahamasPerfect Day at CocoCay, BahamasOrlando (Port Canaveral), Florida
-                            </td>
-                            <td class="px-6 py-4">
-                                Fri, jan 19, 2023
-                            </td>
+                            
                             <td class="flex items-center px-6 py-4 space-x-3">
                                 <!-- <a href="#" class="font-medium text-green-600 dark:text-blue-500 hover:underline">Edit</a> -->
                                 <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Cancel</a>
