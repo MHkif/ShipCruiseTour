@@ -338,8 +338,8 @@
 
 
             const xmlhttp = new XMLHttpRequest();
-            xmlhttp.onload = function() {
-                document.getElementById("name").value = this.responseText[0];
+            xmlhttp.onreadystatechange = function() {
+                roomNum.value = 1;
 
                 xmlhttp.open("GET", "admin/datamodel/", true);
                 xmlhttp.send();
