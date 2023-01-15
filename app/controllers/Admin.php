@@ -8,7 +8,11 @@ class Admin extends Controller
     $this->dataModel = $this->model('DataModel');
     $this->userModel = $this->model('Users');
   }
-  
+
+  public function datamodel()
+  {
+    echo $this->dataModel->getRoomData(2);
+  }
 
   public function dashboard()
   {
@@ -35,6 +39,19 @@ class Admin extends Controller
     $this->view('admin/reservations', $data);
   }
 
+  public function test()
+  {
+    if (!isAdminLoggedIn()) {
+      redirect('pages/');
+    }
+
+    $data = [
+      'title' => SITENAME,
+    ];
+
+    $this->view('admin/test', $data);
+  }
+
   public function cruisePanel()
   {
     if (!isAdminLoggedIn()) {
@@ -42,8 +59,7 @@ class Admin extends Controller
     }
 
     $ships = $this->dataModel->getData("ship");
-    $rooms = $this->dataModel->getData("room");
-    // $room_types = $this->dataModel->getData("room_type", $room, $type);
+    $rooms = $this->dataModel->getRoomData(2);
     $ports = $this->dataModel->getData("port");
     $data = [
       'title' => SITENAME,
