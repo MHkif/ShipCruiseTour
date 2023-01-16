@@ -19,8 +19,9 @@
     }
 
     public function cruise(){
+      $cruises = $this->dataModel->getCruises();
       $data = [
-        'title' => 'Find Cruises',
+        'cruises' => $cruises,
       ];
 
       $this->view('pages/cruise', $data);

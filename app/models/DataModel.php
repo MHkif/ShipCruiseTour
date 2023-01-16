@@ -19,6 +19,14 @@ class DataModel
 
         return $results;
     }
+    public function getCruises(){
+        $sql = "SELECT cruise.id , cruise.name , cruise.price , cruise.image , cruise.nights_number , cruise.depart_date , cruise.ship_id ,port.id, port.name as'depart_port', port.country, itinerary.id, itinerary.name as 'itinerary_name', ship.id , ship.name as 'ship_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port on cruise.port_id = port.id inner join itinerary on cruise.itinerary_id = itinerary.id";
+        $this->db->query($sql);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
 
     public function getRoomData($num)
     {

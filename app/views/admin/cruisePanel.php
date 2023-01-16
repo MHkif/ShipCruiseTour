@@ -20,7 +20,29 @@
     <script src="https://kit.fontawesome.com/58c375ca00.js" crossorigin="anonymous"></script>
 
     <title><?php echo SITENAME; ?></title>
+    <style>
+        
+        /* width */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
 
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: white;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgb(249 115 22); 
+                }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(234 88 12);
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +53,7 @@
 
     <div class="w-full min-h-screen font-sans text-gray-900 bg-gray-50 flex overflow-hidden pt-16">
 
-        <aside class="py-2 w-64 shadow-sm bg-white fixed left-0  min-h-screen">
+        <aside class="py-2 w-60 shadow-sm bg-white fixed left-0  min-h-screen">
             <div class="px-3 py-4 overflow-y-auto rounded">
                 <ul class="space-y-2">
                     <li>
@@ -122,7 +144,7 @@
 
         </aside>
 
-        <main class="ml-64 flex-1 overflow-x-scroll px-4 ">
+        <main class="ml-60 flex-1 overflow-x-scroll px-4 ">
             <div class="flex items-center justify-between py-7 px-2">
                 <div>
                     <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Cruises</h1>
@@ -150,7 +172,7 @@
                                 <div class="flex items-center justify-center" aria-label="Home" role="img" style="font-family: 'Prosto One', cursive;">
                                     <p class="ml-2  text-base  font-bold text-dark dark:text-white">Create New Cruise</p>
                                 </div>
-                                <form class="space-y-4" action="admin/createCruise" method="POST" enctype="">
+                                <form class="space-y-4" action="<?php echo URLROOT ?>/cruise/createCruise" method="POST" enctype="multipart/form-data">
                                     <div class="w-full flex gap-4">
                                         <div class="w-full">
                                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cruise name</label>
@@ -163,7 +185,6 @@
                                             <select name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
                                                 <option value="" disabled selected>Ship name</option>
                                                 <?php foreach ($data['ships'] as $ship) : ?>
-
 
                                                     <option value="<?php echo $ship->id ?>"><?php echo $ship->name ?></option>
                                                 <?php endforeach; ?>
@@ -185,28 +206,12 @@
                                         </div>
                                         <div class="w-full">
                                             <label for="date_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Date</label>
-                                            <input type="date" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Select a date" data-mdb-toggle="datepicker" />
+                                            <input type="date" name="date_depart" id="date_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Select a date" data-mdb-toggle="datepicker" />
                                         </div>
                                     </div>
 
 
-                                    <div class="w-full flex gap-4">
-                                        <div class="w-full">
-                                            <label for="room_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room Type</label>
-                                            <!-- <input type="text" name="room_type" id="room_type" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Cruise name" required> -->
-                                            <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
-                                                <option value="" disabled selected>Solo</option>
-                                                <?php foreach ($data['rooms'] as $room) : ?>
-                                                    <option value="<?php echo $room->id ?>"><?php echo $room->name ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                        <div class="w-full">
-                                            <label for="room_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room Number</label>
-                                            <input type="number" onkeyup="take(this.value)" name="room_number" id="room_number" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Room number" required>
 
-                                        </div>
-                                    </div>
                                     <div class="w-full flex gap-4">
                                         <div class="w-full">
                                             <label for="night_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nights Number</label>
@@ -222,8 +227,14 @@
                                     <div class="w-full flex gap-4">
                                         <div class="w-full">
                                             <label for="Itinerary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Itinerary</label>
-                                            <input type="text" name="Itinerary" id="Itinerary" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Cruise Itinerary" required>
+                                            <select name="Itinerary" id="Itinerary" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
+                                                <option value="" disabled selected>Select an itinerary</option>
+                                                <?php foreach ($data['itinerary'] as $itinerary) : ?>
 
+
+                                                    <option value="<?php echo $itinerary->id ?>"><?php echo $itinerary->name ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                         <div class="w-full">
                                             <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cruise Image</label>
@@ -252,28 +263,32 @@
                             <label for="checkbox-all-search" class="sr-only">checkbox</label>
                         </div>
                     </th> -->
-
+                    <th scope="col" class="px-6 py-3">
+                            image
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Cruise name
+                        </th>
                         <th scope="col" class="px-6 py-3">
                             Ship
                         </th>
                         <th scope="col" class="px-6 py-3">
                             price
                         </th>
+                       
                         <th scope="col" class="px-6 py-3">
-                            image
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Number of nights
+                            Nights
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Derparture Port
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Itinerary
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Derparture Date
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Itinerary
+                        </th>
+                        
 
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -281,39 +296,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <!-- <td class="w-4 p-4">
+                    <?php foreach ($data['cruises'] as $cruise) : ?>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <!-- <td class="w-4 p-4">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td> -->
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            ALLURE OF SEAS
-                        </th>
-                        <td class="px-6 py-4">
-                            $349 * 3
-                        </td>
-                        <td class="px-6 py-4">
-                            image
-                        </td>
-                        <td class="px-6 py-4">
-                            3 Nights
-                        </td>
-                        <td class="px-6 py-4">
-                            Orlando (Port Canaveral), Florida
-                        </td>
-                        <td class="px-6 py-4">
-                            Orlando (Port Canaveral), FloridaNassau, BahamasPerfect Day at CocoCay, BahamasOrlando (Port Canaveral), Florida
-                        </td>
-                        <td class="px-6 py-4">
-                            Fri, jan 19, 2023
-                        </td>
+
+
+                    <td scope="row" class="px-6 py-4 w-full">
+                            <img class="rounded-sm " src="<?php echo URLROOT . '/uploads/cruises/' . $cruise->image ; ?>" style="width: 180px;height: 80px;" alt="img">
+                                
+                            </td>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <?php echo $cruise->name ?>
+                            </th>
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <?php echo $cruise->ship_name ?>
+                            </td>
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                $ <?php echo $cruise->price ?>
+                            </td>
+                           
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <?php echo $cruise->nights_number ?> Nights
+                            </td>
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <?php echo $cruise->depart_port ?>
+                            </td>
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <?php echo  date_format( date_create($cruise->depart_date),"F j, Y"); ?>
+                            </td>
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                                <?php echo $cruise->itinerary_name ?>
+                            </td>
+                          
+                        
+
                         <td class="flex items-center px-6 py-4 space-x-3">
                             <!-- <a href="#" class="font-medium text-green-600 dark:text-blue-500 hover:underline">Edit</a> -->
-                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Cancel</a>
+                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                         </td>
-                    </tr>
+                        </tr>
+                        <?php endforeach; ?>
 
                 </tbody>
             </table>
@@ -326,26 +353,6 @@
     <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
 
 
-    <script>
-        function take(num) {
-            let roomType = document.getElementById("room_type");
-            let roomNum = document.getElementById("room_number");
-            let roomPrice = document.getElementById("price");
-
-            // roomPrice.value = num;
-
-
-
-
-            const xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                roomNum.value = 1;
-
-                xmlhttp.open("GET", "admin/datamodel/", true);
-                xmlhttp.send();
-
-            }}
-    </script>
 
 </body>
 

@@ -96,176 +96,51 @@ require APPROOT . '/views/includes/header.php';
             All Cruises
         </h1>
         <!-- Items -->
-        <div class="items-center md:justify-between w-full rounded-lg group sm:flex  bg-white bg-opacity-50 shadow-lg hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
-            <!--  -->
-            <div class="flex flex-col md:flex-row">
-                <img class="block w-full rounded-t-lg h-60 md:rounded-l-lg md:w-1/3" alt="art cover" loading="lazy" src='../public/src/img/barcelona.jpg' />
-                <div class="p-4 flex flex-col justify-between md:p-8 gap-2">
-                    <h4 class="text-md font-semibold text-dark md:text-lg" style="font-family: 'Prosto One', cursive;">
-                        5 Nights
-                    </h4>
-                    <h4 class="text-md font-semibold text-gray-800 md:text-lg">
-                        Western Caribbean Cruise
-                    </h4>
+        <?php foreach ($data['cruises'] as $cruise) : ?>
 
-                    <div class="flex flex-col  baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">
-                            ROUNDTRIP FROM : &nbsp;
+            <div class="items-center md:justify-between w-full rounded-lg group sm:flex  bg-white bg-opacity-50 shadow-lg hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
+                <!--  -->
+                <div class="flex flex-col md:flex-row">
+                    <img class="block w-full rounded-t-lg h-60 md:rounded-l-lg md:w-1/3" alt="art cover" loading="lazy" src='<?php echo URLROOT . "/uploads/cruises/" . $cruise->image ?>' />
+                    <div class="p-4 flex flex-col justify-between md:p-8 gap-2">
+                        <h4 class="text-md font-semibold text-dark md:text-lg" style="font-family: 'Prosto One', cursive;">
+                            <?php echo $cruise->nights_number ?> Nights
                         </h4>
-                        <span class="text-sm text-gray-500"> Galveston, Texas .</span>
-                    </div>
-                    <div class="flex flex-col baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">VISITING : &nbsp; </h4>
-                        <span class="text-sm text-gray-500"> Galveston, TexasCozumel, MexicoGalveston, Texas .</span>
-                    </div>
-                </div>
-
-            </div>
-            <!--  -->
-            <div class=" p-4 flex md:items-center flex-col space-y-2 justify-center md:space-y-4 md:p-8">
-                <h3 class="text-2xl font-semibold text-cyan-900 sm:text-3xl" style="font-family: 'Prosto One', cursive;">
-                    198 $
-                </h3>
-                <h3 class="text-md font-semibold text-cyan-900 sm:text-lg">
-                    AVG PER PERSON
-                </h3>
-                <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                    Book now
-                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <!--  -->
-        <div class="items-center md:justify-between w-full rounded-lg group sm:flex  bg-white bg-opacity-50 shadow-lg hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
-            <!--  -->
-            <div class="flex flex-col md:flex-row">
-                <img class="block w-full rounded-t-lg h-60 md:rounded-l-lg md:w-1/3" alt="art cover" loading="lazy" src='../public/src/img/barcelona.jpg' />
-                <div class="p-4 flex flex-col justify-between md:p-8 gap-2">
-                    <h4 class="text-md font-semibold text-dark md:text-lg" style="font-family: 'Prosto One', cursive;">
-                        5 Nights
-                    </h4>
-                    <h4 class="text-md font-semibold text-gray-800 md:text-lg">
-                        Western Caribbean Cruise
-                    </h4>
-
-                    <div class="flex flex-col  baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">
-                            ROUNDTRIP FROM : &nbsp;
+                        <h4 class="text-md font-semibold text-gray-800 md:text-lg">
+                            <?php echo $cruise->name ?>
                         </h4>
-                        <span class="text-sm text-gray-500"> Galveston, Texas .</span>
+
+                        <div class="flex flex-col  baseline sm:flex-row">
+                            <h4 class="text-sm font-semibold text-gray-600 md:text-md">
+                                ROUNDTRIP FROM : &nbsp;
+                            </h4>
+                            <span class="text-sm text-gray-500"> <?php echo $cruise->depart_port ?>.</span>
+                        </div>
+                        <div class="flex flex-col baseline sm:flex-row">
+                            <h4 class="text-sm font-semibold text-gray-600 md:text-md">VISITING : &nbsp; </h4>
+                            <span class="text-sm text-gray-500"> <?php echo $cruise->itinerary_name ?> .</span>
+                        </div>
                     </div>
-                    <div class="flex flex-col baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">VISITING : &nbsp; </h4>
-                        <span class="text-sm text-gray-500"> Galveston, TexasCozumel, MexicoGalveston, Texas .</span>
-                    </div>
+
                 </div>
-
-            </div>
-            <!--  -->
-            <div class=" p-4 flex md:items-center flex-col space-y-2 justify-center md:space-y-4 md:p-8">
-                <h3 class="text-2xl font-semibold text-cyan-900 sm:text-3xl" style="font-family: 'Prosto One', cursive;">
-                    198 $
-                </h3>
-                <h3 class="text-md font-semibold text-cyan-900 sm:text-lg">
-                    AVG PER PERSON
-                </h3>
-                <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                    Book now
-                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <!--  -->
-        <div class="items-center md:justify-between w-full rounded-lg group sm:flex  bg-white bg-opacity-50 shadow-lg hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
-            <!--  -->
-            <div class="flex flex-col md:flex-row">
-                <img class="block w-full rounded-t-lg h-60 md:rounded-l-lg md:w-1/3" alt="art cover" loading="lazy" src='../public/src/img/barcelona.jpg' />
-                <div class="p-4 flex flex-col justify-between md:p-8 gap-2">
-                    <h4 class="text-md font-semibold text-dark md:text-lg" style="font-family: 'Prosto One', cursive;">
-                        5 Nights
-                    </h4>
-                    <h4 class="text-md font-semibold text-gray-800 md:text-lg">
-                        Western Caribbean Cruise
-                    </h4>
-
-                    <div class="flex flex-col  baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">
-                            ROUNDTRIP FROM : &nbsp;
-                        </h4>
-                        <span class="text-sm text-gray-500"> Galveston, Texas .</span>
-                    </div>
-                    <div class="flex flex-col baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">VISITING : &nbsp; </h4>
-                        <span class="text-sm text-gray-500"> Galveston, TexasCozumel, MexicoGalveston, Texas .</span>
-                    </div>
+                <!--  -->
+                <div class=" p-4 flex md:items-center flex-col space-y-2 justify-center md:space-y-4 md:p-8">
+                    <h3 class="text-2xl font-semibold text-cyan-900 sm:text-3xl" style="font-family: 'Prosto One', cursive;">
+                        <?php echo $cruise->price ?> $
+                    </h3>
+                    <h3 class="text-md font-semibold text-cyan-900 sm:text-lg">
+                        AVG PER PERSON
+                    </h3>
+                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                        Book now
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
                 </div>
-
             </div>
-            <!--  -->
-            <div class=" p-4 flex md:items-center flex-col space-y-2 justify-center md:space-y-4 md:p-8">
-                <h3 class="text-2xl font-semibold text-cyan-900 sm:text-3xl" style="font-family: 'Prosto One', cursive;">
-                    198 $
-                </h3>
-                <h3 class="text-md font-semibold text-cyan-900 sm:text-lg">
-                    AVG PER PERSON
-                </h3>
-                <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                    Book now
-                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
+        <?php endforeach; ?>
 
-        <!--  -->
-        <div class="items-center md:justify-between w-full rounded-lg group sm:flex  bg-white bg-opacity-50 shadow-lg hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
-            <!--  -->
-            <div class="flex flex-col md:flex-row">
-                <img class="block w-full rounded-t-lg h-60 md:rounded-l-lg md:w-1/3" alt="art cover" loading="lazy" src='../public/src/img/barcelona.jpg' />
-                <div class="p-4 flex flex-col justify-between md:p-8 gap-2">
-                    <h4 class="text-md font-semibold text-dark md:text-lg" style="font-family: 'Prosto One', cursive;">
-                        5 Nights
-                    </h4>
-                    <h4 class="text-md font-semibold text-gray-800 md:text-lg">
-                        Western Caribbean Cruise
-                    </h4>
-
-                    <div class="flex flex-col  baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">
-                            ROUNDTRIP FROM : &nbsp;
-                        </h4>
-                        <span class="text-sm text-gray-500"> Galveston, Texas .</span>
-                    </div>
-                    <div class="flex flex-col baseline sm:flex-row">
-                        <h4 class="text-sm font-semibold text-gray-600 md:text-md">VISITING : &nbsp; </h4>
-                        <span class="text-sm text-gray-500"> Galveston, TexasCozumel, MexicoGalveston, Texas .</span>
-                    </div>
-                </div>
-
-            </div>
-            <!--  -->
-            <div class=" p-4 flex md:items-center flex-col space-y-2 justify-center md:space-y-4 md:p-8">
-                <h3 class="text-2xl font-semibold text-cyan-900 sm:text-3xl" style="font-family: 'Prosto One', cursive;">
-                    198 $
-                </h3>
-                <h3 class="text-md font-semibold text-cyan-900 sm:text-lg">
-                    AVG PER PERSON
-                </h3>
-                <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                    Book now
-                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
 
     </div>
 </div>

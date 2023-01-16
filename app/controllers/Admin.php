@@ -3,16 +3,21 @@ class Admin extends Controller
 {
   private $userModel;
   private $dataModel;
+  private $ships;
+  private $rooms;
+  private $ports;
+  private $itinerary;
   public function __construct()
   {
     $this->dataModel = $this->model('DataModel');
     $this->userModel = $this->model('Users');
+    $this->ships = $this->dataModel->getData("ship");
+    $this->rooms = $this->dataModel->getRoomData(2);
+    $this->ports = $this->dataModel->getData("port");
+    $this->itinerary = $this->dataModel->getData("itinerary");
   }
 
-  public function datamodel()
-  {
-    echo $this->dataModel->getRoomData(2);
-  }
+
 
   public function dashboard()
   {
@@ -39,18 +44,6 @@ class Admin extends Controller
     $this->view('admin/reservations', $data);
   }
 
-  public function test()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/test', $data);
-  }
 
   public function cruisePanel()
   {
@@ -58,15 +51,15 @@ class Admin extends Controller
       redirect('pages/');
     }
 
-    $ships = $this->dataModel->getData("ship");
-    $rooms = $this->dataModel->getRoomData(2);
-    $ports = $this->dataModel->getData("port");
+    $cruises = $this->dataModel->getCruises();
+
     $data = [
       'title' => SITENAME,
-      'ships' => $ships,
-      'rooms' => $rooms,
-      // 'room_type' => $room_types;
-      'ports' => $ports,
+      'cruises' => $cruises,
+      'ships' => $this->ships,
+      'rooms' => $this->rooms,
+      'itinerary' => $this->itinerary,
+      'ports' => $this->ports,
     ];
 
     $this->view('admin/cruisePanel', $data);
@@ -119,6 +112,9 @@ class Admin extends Controller
 
     $data = [
       'title' => SITENAME,
+      'ships' => $this->ships,
+      // 'itinerary' => $this->itinerary,
+      // 'ports' => $this->ports,
     ];
 
     $this->view('admin/shipPanel', $data);
@@ -259,6 +255,7 @@ class Admin extends Controller
       $this->view('admin/register', $data);
     }
   }
+
 
   public function login()
   {
