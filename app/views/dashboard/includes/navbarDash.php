@@ -1,3 +1,28 @@
+
+  <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: white;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgb(249 115 22);
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgb(234 88 12);
+        }
+    </style>
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.css" />
+
 <nav class="bg-white fixed w-full z-10 top-0">
 
     <div class="container mx-auto px-4 py-1 flex items-center justify-between">

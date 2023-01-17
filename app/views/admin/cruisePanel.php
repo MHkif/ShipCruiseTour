@@ -20,8 +20,7 @@
     <script src="https://kit.fontawesome.com/58c375ca00.js" crossorigin="anonymous"></script>
 
     <title><?php echo SITENAME; ?></title>
-    <style>
-        
+    <!-- <style>
         /* width */
         ::-webkit-scrollbar {
             width: 6px;
@@ -35,14 +34,14 @@
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: rgb(249 115 22); 
-                }
+            background: rgb(249 115 22);
+        }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
             background: rgb(234 88 12);
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
@@ -257,13 +256,13 @@
 
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <!-- <th scope="col" class="p-4">
+                        <th scope="col" class="p-4">
                         <div class="flex items-center">
                             <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="checkbox-all-search" class="sr-only">checkbox</label>
                         </div>
-                    </th> -->
-                    <th scope="col" class="px-6 py-3">
+                    </th>
+                        <th scope="col" class="px-6 py-3">
                             image
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -275,7 +274,7 @@
                         <th scope="col" class="px-6 py-3">
                             price
                         </th>
-                       
+
                         <th scope="col" class="px-6 py-3">
                             Nights
                         </th>
@@ -288,7 +287,7 @@
                         <th scope="col" class="px-6 py-3">
                             Itinerary
                         </th>
-                        
+
 
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -298,17 +297,17 @@
                 <tbody>
                     <?php foreach ($data['cruises'] as $cruise) : ?>
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <!-- <td class="w-4 p-4">
+                            <td class="w-4 p-4">
                         <div class="flex items-center">
                             <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
-                    </td> -->
+                    </td>
 
 
-                    <td scope="row" class="px-6 py-4 w-full">
-                            <img class="rounded-sm " src="<?php echo URLROOT . '/uploads/cruises/' . $cruise->image ; ?>" style="width: 180px;height: 80px;" alt="img">
-                                
+                            <td scope="row" class="px-6 py-4 w-full">
+                                <img class="rounded-sm " src="<?php echo URLROOT . '/uploads/cruises/' . $cruise->image; ?>" style="width: 180px;height: 80px;" alt="img">
+
                             </td>
                             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                 <?php echo $cruise->name ?>
@@ -319,7 +318,7 @@
                             <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                 $ <?php echo $cruise->price ?>
                             </td>
-                           
+
                             <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                 <?php echo $cruise->nights_number ?> Nights
                             </td>
@@ -327,20 +326,20 @@
                                 <?php echo $cruise->depart_port ?>
                             </td>
                             <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                <?php echo  date_format( date_create($cruise->depart_date),"F j, Y"); ?>
+                                <?php echo  date_format(date_create($cruise->depart_date), "F j, Y"); ?>
                             </td>
                             <td scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                 <?php echo $cruise->itinerary_name ?>
                             </td>
-                          
-                        
 
-                        <td class="flex items-center px-6 py-4 space-x-3">
-                            <!-- <a href="#" class="font-medium text-green-600 dark:text-blue-500 hover:underline">Edit</a> -->
-                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                        </td>
+
+
+                            <td class="flex items-center px-6 py-4 space-x-3">
+                                <!-- <a href="#" class="font-medium text-green-600 dark:text-blue-500 hover:underline">Edit</a> -->
+                                <a href="<?php echo URLROOT ?>/cruise/deleteCruise/<?php echo $cruise->cruise_id ?>" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                            </td>
                         </tr>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
                 </tbody>
             </table>

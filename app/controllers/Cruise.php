@@ -91,8 +91,25 @@ class Cruise extends Controller
                 'Itinerary' => "",
             ];
 
-              die('Not Success it is not a Post request');
+            die('Not Success it is not a Post request');
             $this->view('admin/dashboard', $data);
+        }
+    }
+
+
+    public function deleteCruise($data)
+    {
+        $id = $data[0];
+
+        if (!empty($id)) {
+            // die('INSIDE :' . $id);
+            if ($this->cruiseModel->delete($id)) {
+                redirect('admin/cruisePanel');
+            } else {
+                redirect('admin/cruisePanel');
+            }
+        } else {
+            die("error : EMPTY ID");
         }
     }
 }

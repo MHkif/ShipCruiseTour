@@ -67,5 +67,9 @@ class Clients extends UserModel{
       return $row;
     }
 
+    public function reserve(){
+      
+    }
+
     
 }

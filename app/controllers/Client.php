@@ -1,12 +1,27 @@
 <?php
 
 
-class Clients extends Controller
+class Client extends Controller
 {
+  private $clientModel;
+  private $dataModel;
+  private $ships;
+  private $rooms;
+  private $ports;
+  private $roomType;
+  private $itinerary;
+
   public function __construct()
   {
+    $this->dataModel = $this->model('DataModel');
     $this->clientModel = $this->model('Clients');
+    $this->ships = $this->dataModel->getData("ship");
+    $this->roomType = $this->dataModel->getData("room_type");
+    $this->rooms = $this->dataModel->getRoomData();
+    $this->ports = $this->dataModel->getData("port");
+    $this->itinerary = $this->dataModel->getData("itinerary");
   }
+
 
   public function register()
   {
@@ -184,5 +199,9 @@ class Clients extends Controller
     unset($_SESSION['user_name']);
     session_destroy();
     redirect('client/login');
+  }
+
+  public function reserveCruise(){
+
   }
 }

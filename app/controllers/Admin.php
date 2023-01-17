@@ -6,13 +6,15 @@ class Admin extends Controller
   private $ships;
   private $rooms;
   private $ports;
+  private $roomType;
   private $itinerary;
   public function __construct()
   {
     $this->dataModel = $this->model('DataModel');
     $this->userModel = $this->model('Users');
     $this->ships = $this->dataModel->getData("ship");
-    $this->rooms = $this->dataModel->getRoomData(2);
+    $this->roomType = $this->dataModel->getData("room_type");
+    $this->rooms = $this->dataModel->getRoomData();
     $this->ports = $this->dataModel->getData("port");
     $this->itinerary = $this->dataModel->getData("itinerary");
   }
@@ -128,6 +130,7 @@ class Admin extends Controller
 
     $data = [
       'title' => SITENAME,
+      'ports' => $this->ports,
     ];
 
     $this->view('admin/portPanel', $data);
@@ -141,6 +144,9 @@ class Admin extends Controller
 
     $data = [
       'title' => SITENAME,
+      'rooms' => $this->rooms,
+      'type' => $this->roomType,
+
     ];
 
     $this->view('admin/roomPanel', $data);
