@@ -43,47 +43,36 @@ font-family: 'Prosto One', cursive;">
         <div class="w-full flex flex-col md:flex-row flex-wrap justify-center items-center p-4 gap-4 md:gap-6">
 
             <div class="flex flex-col w-full md:w-52 gap-2">
-            <label for="select cruise" class="text-base font-medium text-gray-800">Crusing To</label>
-               
-            <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="Destination" aria-label="Default select example">
-                <?php foreach ($data['destinations'] as $destination) : ?>
-                    <option value="<?php echo $destination->id?>"><?php echo $destination->name?></option>
+                <label for="select cruise" class="text-base font-medium text-gray-800">Crusing To</label>
+
+                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="Destination" aria-label="Default select example">
+                    <?php foreach ($data['destinations'] as $destination) : ?>
+                        <option value="<?php echo $destination->id ?>"><?php echo $destination->name ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
             <div class="flex flex-col w-full md:w-52 gap-2">
-            <label for="select cruise" class="text-base font-medium text-gray-800">Departure From</label>
+                <label for="select cruise" class="text-base font-medium text-gray-800">Departure From</label>
                 <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
-                <?php foreach ($data['ports'] as $port) : ?>
+                    <?php foreach ($data['ports'] as $port) : ?>
 
-                    
-                    <option value="<?php echo $port->id?>"><?php echo $port->name?></option>
+
+                        <option value="<?php echo $port->id ?>"><?php echo $port->name ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
 
-            <!-- <div class="mb-2 w-60 sm:w-96  md:w-52">
-                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
-
-                    <option selected>Departing Date</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div> -->
+          
 
             <div class="flex w-auto flex-col gap-2">
-            <label for="select date" class="text-base font-medium text-gray-800">Cruise Date</label>
-            <div class="flex flex-col md:flex-row w-full items-center justify-center md:w-auto gap-2 md:gap-4">
-                <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
-                    <input type="date" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
+                <label for="select date" class="text-base font-medium text-gray-800">Cruise Date</label>
+                <div class="flex flex-col md:flex-row w-full items-center justify-center md:w-auto gap-2 md:gap-4">
+                    <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
+                        <input type="date" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
+                    </div>
+                    
                 </div>
-                <span class="text-gray-500">to</span>
-                <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
-                    <input type="date" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
-                </div>
-            </div>
             </div>
 
             <div class="flex md:self-end pb-0.5">
@@ -211,7 +200,7 @@ font-family: 'Prosto One', cursive;">
     <h1 class="max-w-md text-1xl font-bold text-center my-6 md:text-3xl md:text-left md:my-8">
         Most Visited Destination
     </h1>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start  md:grid-cols-3 lg:grid-cols-4" >
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start  md:grid-cols-3 lg:grid-cols-4">
         <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
 
             <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/barcelona.jpg" alt="" />

@@ -128,7 +128,7 @@
 
 
                 </div>
-                <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1" data-modal-target="reservation-modal" data-modal-toggle="reservation-modal" >
+                <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-orange-600 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1" data-modal-target="reservation-modal" data-modal-toggle="reservation-modal">
 
                     <span class="text-sm font-semibold tracking-wide">Add Reservation</span>
                 </button>

@@ -267,11 +267,10 @@ class Admin extends Controller
   {
     // Check for POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Process form
-      // Sanitize POST data
+   
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-      // Init data
+  
       $data = [
         'email' => trim($_POST['email']),
         'password' => trim($_POST['password']),
