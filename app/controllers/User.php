@@ -2,9 +2,21 @@
 class User extends Controller
 {
   private $userModel;
+  private $dataModel;
+  private $rooms;
+  private $ships;
+  private $ports;
+  private $destinations;
+
   public function __construct()
   {
+
     $this->userModel = $this->model('Users');
+    $this->dataModel = $this->model('DataModel');
+    $this->ships = $this->dataModel->getData("ship");
+    $this->ports = $this->dataModel->getData("port");
+    $this->destinations  = $this->dataModel->getData("destinations");
+    $this->rooms = $this->dataModel->getData("room_type");
   }
 
 
@@ -183,36 +195,65 @@ class User extends Controller
         'password_err' => '',
       ];
 
-      // Load view
+
       $this->view('pages', $data);
     }
   }
 
 
+  public function searchCruise()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+      $params = [
+        'destination' => trim($_POST['destination']),
+        'port' => trim($_POST['port']),
+        'cruiseDate' => trim($_POST['cruiseDate']),
+
+      ];
+
+      $data = [];
+
+      if (!empty($params['destination']) && !empty($params['port']) && !empty($params['cruiseDate'])) {
+        // die(print_r($data));
+
+        if ($this->dataModel->SearchCruises($params)) {
+          // die('HOLLA');
+          $cruises = $this->dataModel->SearchCruises($params);
+
+          $data = [
+            'cruises' => $cruises,
+            'rooms' => $this->rooms,
+            'destinations' => $this->destinations,
+            'ports' => $this->ports,
+            'ships' => $this->ships
+          ];
+          // die(print_r($this->rooms));
+          $this->view('pages/cruise', $data);
+          // die(print_r($result));
+        } else {
+          redirect('pages/cruise');
+        }
+      }
+      die("Fields Empty");
+      // redirect('pages/cruise');
+    } else {
+      die('Here We Go Again');
+    }
+  }
 
   public function createUserSession($user)
   {
-    // echo '<pre>';
-    // var_dump($user);
-    // echo '</pre>';
-    // exit;
+
     if ($user->role) {
-      // echo '<pre>';
-      // var_dump($user);
-      // echo ' Here is An Admin';
-      // echo '</pre>';
-      // exit;
+
       $_SESSION['role'] = $user->role;
       $_SESSION['admin_id'] = $user->id;
       $_SESSION['admin_email'] = $user->email;
       $_SESSION['admin_name'] = $user->first_name;
       redirect('admin/dashboard');
     } else {
-      //   echo '<pre>';
 
-      // var_dump($user);
-      // echo '</pre>';
-      // exit;
       $_SESSION['role'] = $user->role;
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
@@ -223,7 +264,6 @@ class User extends Controller
   public function logout()
   {
 
-    // $checkUser = $this->userModel->checkUser($loggedInUser->id);
     if ($_SESSION['role']) {
       unset($_SESSION['admin_id']);
       unset($_SESSION['admin_email']);

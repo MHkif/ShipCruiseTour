@@ -31,8 +31,116 @@ font-family: 'Prosto One', cursive;">
 </div>
 <!-- Hero content goes here -->
 
-
 </div>
+
+<!-- reservation Modal -->
+<div id="reservation-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-screen">
+    <div class="relative w-full h-full max-w-md md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="reservation-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="px-4 py-8 lg:px-6 flex flex-col gap-8">
+                <!-- <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3> -->
+                <div class="flex items-center justify-center" aria-label="Home" role="img" style="font-family: 'Prosto One', cursive;">
+                    <p class="ml-2  text-base  font-bold text-dark dark:text-white">Reserve Your Cruise</p>
+                </div>
+                <form class="space-y-4 " action="admin/createCruise" method="POST" enctype="">
+                    <div class="w-full flex gap-4">
+                        <div class="w-full">
+                            <label for="client" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Client name</label>
+                            <input type="text" name="client" id="client" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white hover:read-only " placeholder="Client name" required>
+
+                        </div>
+                        <div class="w-full">
+                            <label for="cruise" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cruise name</label>
+                            <!-- <input type="text" name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ship name" required> -->
+                            <input type="text" name="cruise" id="cruise" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white hover:read-only " placeholder="Cruise name" required>
+
+
+                        </div>
+                    </div>
+                    <div class="w-full flex gap-4">
+                        <div class="w-full">
+                            <label for="port_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Port</label>
+                            <!-- <input type="text" name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Port name" required> -->
+                            <select name="port_depart" id="port_depart" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
+                                <option value="" disabled selected>Port name</option>
+                                <?php foreach ($data['ports'] as $port) : ?>
+
+
+                                    <option value="<?php echo $port->id ?>"><?php echo $port->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="w-full">
+                            <label for="date_depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Derparture Date</label>
+                            <input type="date" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Select a date" data-mdb-toggle="datepicker" />
+                        </div>
+                    </div>
+
+                    <div class="w-full flex gap-4">
+                        <div class="w-full">
+                            <label for="ship" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ship</label>
+                            <input type="text" value="<?php echo $data['cruises'][0]->ship_name ?>" name="ship" id="ship" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ship name" required>
+
+                        </div>
+                        <div class="w-full">
+                            <label for="night_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nights Number</label>
+                            <input type="number" name="night_number" id="night_number" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nights number" required>
+
+                        </div>
+                    </div>
+
+                    <div class="w-full flex gap-4">
+                        <div class="w-full">
+                            <label for="room_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room Type</label>
+                            <!-- <input type="text" name="room_type" id="room_type" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Cruise name" required> -->
+                            <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
+                                <option value="" disabled selected>Solo</option>
+                                <?php foreach ($data['rooms'] as $room) : ?>
+                                    <option value="<?php echo $room->id ?>"><?php echo $room->name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="w-full">
+                            <label for="room_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Room Number</label>
+                            <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" aria-label="Default select example" required>
+                                <option value="" disabled selected>Select room number</option>
+                                <?php foreach ($data['rooms'] as $room) : ?>
+                                    <option value="<?php echo $room->id ?>"><?php echo $room->room_num ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="w-full flex gap-4">
+
+                        <div class="w-full">
+                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                            <input type="number" name="price" id="price" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Cruise Price" required>
+
+                        </div>
+                        <div class="w-full">
+                            <label for="Itinerary" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Itinerary</label>
+                            <input type="text" name="Itinerary" id="Itinerary" class="bg-white border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Cruise Itinerary" required>
+
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="w-full text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Reservation -->
 <section id="reservation" class="px-4 sm:px-6 md:px-16 -mt-8 md:-mt-16">
     <div class="container-fluid bg-white rounded-md drop-shadow-xl py-6 flex flex-col items-center justify-center gap-6">
@@ -40,46 +148,46 @@ font-family: 'Prosto One', cursive;">
         <h1 class="max-w-md text-1xl font-bold text-center md:text-2xl text-gray-800" style="font-family: 'Prosto One', cursive;">
             Where You Wanna Go ?
         </h1>
-        <div class="w-full flex flex-col md:flex-row flex-wrap justify-center items-center p-4 gap-4 md:gap-6">
+        <form action="<?php echo URLROOT ?>/user/searchCruise" method="POST">
+            <div class="w-full flex flex-col md:flex-row flex-wrap justify-center items-center p-4 gap-4 md:gap-6">
 
-            <div class="flex flex-col w-full md:w-52 gap-2">
-                <label for="select cruise" class="text-base font-medium text-gray-800">Crusing To</label>
+                <div class="flex flex-col w-full md:w-52 gap-2">
+                    <label for="select cruise" class="text-base font-medium text-gray-800">Crusing To</label>
 
-                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="Destination" aria-label="Default select example">
-                    <?php foreach ($data['destinations'] as $destination) : ?>
-                        <option value="<?php echo $destination->id ?>"><?php echo $destination->name ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="flex flex-col w-full md:w-52 gap-2">
-                <label for="select cruise" class="text-base font-medium text-gray-800">Departure From</label>
-                <select class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example">
-                    <?php foreach ($data['ports'] as $port) : ?>
-
-
-                        <option value="<?php echo $port->id ?>"><?php echo $port->name ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-          
-
-            <div class="flex w-auto flex-col gap-2">
-                <label for="select date" class="text-base font-medium text-gray-800">Cruise Date</label>
-                <div class="flex flex-col md:flex-row w-full items-center justify-center md:w-auto gap-2 md:gap-4">
-                    <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
-                        <input type="date" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" />
-                    </div>
-                    
+                    <select name="destination" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="Destination" aria-label="Default select example" required>
+                        <?php foreach ($data['destinations'] as $destination) : ?>
+                            <option value="<?php echo $destination->id ?>"><?php echo $destination->name ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
-            </div>
 
-            <div class="flex md:self-end pb-0.5">
-                <button type="button" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Search</button>
-            </div>
+                <div class="flex flex-col w-full md:w-52 gap-2">
+                    <label for="select cruise" class="text-base font-medium text-gray-800">Departure From</label>
+                    <select name="port" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-label="Default select example" required>
+                        <?php foreach ($data['ports'] as $port) : ?>
+                            <option value="<?php echo $port->id ?>"><?php echo $port->name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        </div>
+
+
+                <div class="flex w-auto flex-col gap-2">
+                    <label for="select date" class="text-base font-medium text-gray-800">Cruise Date</label>
+                    <div class="flex flex-col md:flex-row w-full items-center justify-center md:w-auto gap-2 md:gap-4">
+                        <div class="datepicker relative form-floating w-full md:w-52" data-mdb-toggle-button="false">
+                            <input type="date" name="cruiseDate" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Select a date" data-mdb-toggle="datepicker" required />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="flex md:self-end pb-0.5">
+                    <button type="submit" class="inline-block px-6 py-2.5 bg-orange-500  text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-500  hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Search</button>
+                </div>
+
+            </div>
+        </form>
     </div>
 </section>
 
@@ -147,6 +255,7 @@ font-family: 'Prosto One', cursive;">
                 </div>
             </div>
         </div>
+
     </div>
 
 </section>
@@ -201,103 +310,32 @@ font-family: 'Prosto One', cursive;">
         Most Visited Destination
     </h1>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 items-start  md:grid-cols-3 lg:grid-cols-4">
-        <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <?php foreach ($data['cruises'] as $cruise) : ?>
+            <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/barcelona.jpg" alt="" />
+                <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/cruises/<?php echo $cruise->image ?>" alt="" />
 
-            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
+                <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
 
-                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
+                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg"><?php echo $cruise->nights_number ?> Night <?php echo $cruise->name ?> Cruise</h5>
 
-                <div>
-                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
-                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
+                    <div>
+                        <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
+                        <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">MAD <?php echo $cruise->price ?>/person</h5>
 
-                </div>
-                <div class="w-full flex items-align justify-center">
-                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="w-full  bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/bahamas.jpg" alt="" />
-
-
-            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
-
-                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
-
-                <div>
-                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
-                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
-
-                </div>
-                <div class="w-full flex items-align justify-center">
-                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
+                    </div>
+                    <div class="w-full flex items-align justify-center">
+                        <a data-modal-toggle="reservation-modal" data-modal-target="reservation-modal" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                            Book now
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/monaco.jpg" alt="" />
-
-
-            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
-
-                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
-
-                <div>
-                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
-                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
-
-                </div>
-                <div class="w-full flex items-align justify-center">
-                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-            <img class="w-full h-52 rounded-t-lg sm:max-h-60" src="./src/img/canada.jpg" alt="" />
-
-            <div class="p-3 flex flex-col gap-2 md:gap-4 md:p-5">
-
-                <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">5 Night Western Caribbean Cruise</h5>
-
-                <div>
-                    <p class="font-normal text-gray-500 text-xs dark:text-gray-400 md:text-sm">Starting from</p>
-                    <h5 class="text-md tracking-tight font-bold text-gray-900 dark:text-white md:text-lg">$450/person</h5>
-
-                </div>
-                <div class="w-full flex items-align justify-center">
-                    <a href="#" class="w-full inline-flex justify-center px-6 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
-                        Book now
-                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
+        <?php endforeach ?>
     </div>
-
 </section>
 
 <!-- Carousel -->

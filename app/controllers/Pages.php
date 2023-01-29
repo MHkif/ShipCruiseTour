@@ -17,7 +17,7 @@ class Pages extends Controller
     $this->clientModel = $this->model('Clients');
     $this->ships = $this->dataModel->getData("ship");
     $this->roomType = $this->dataModel->getData("room_type");
-    $this->rooms = $this->dataModel->getRoomData();
+    $this->rooms = $this->dataModel->getData("room_type");
     $this->ports = $this->dataModel->getData("port");
     $this->itinerary = $this->dataModel->getData("itinerary");
     $this->cruises =  $this->dataModel->getCruises();
@@ -44,6 +44,9 @@ class Pages extends Controller
     $data = [
       'cruises' => $this->cruises,
       'rooms' => $this->rooms,
+      'destinations' => $this->destinations,
+      'ports' => $this->ports,
+      'ships' => $this->ships
     ];
 
     $this->view('pages/cruise', $data);
