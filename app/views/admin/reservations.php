@@ -274,6 +274,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($data['reservations'] as $reserve) : ?>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <!-- <td class="w-4 p-4">
                     <div class="flex items-center">
@@ -303,6 +304,8 @@
                             <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Cancel</a>
                         </td>
                     </tr>
+
+                    <?php endforeach ?>
 
                 </tbody>
             </table>

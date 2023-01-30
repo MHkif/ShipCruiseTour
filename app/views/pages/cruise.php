@@ -195,7 +195,9 @@ require APPROOT . '/views/includes/header.php';
             <!-- Items -->
             <?php foreach ($data['cruises'] as $cruise) : ?>
 
-                <div class="drop-shadow-sm items-center md:justify-between w-full rounded-lg group sm:flex  bg-white  hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
+          
+
+              <div class="drop-shadow-sm items-center md:justify-between w-full rounded-lg group sm:flex  bg-white  hover:rounded-xl" style="font-family: 'Poppins', sans-serif;">
                     <!--  -->
                     <div class="flex w-full flex-col md:flex-row">
                         <img class="block w-full rounded-t-lg h-60 md:rounded-l-lg md:w-1/3" alt="art cover" loading="lazy" src='<?php echo URLROOT . "/uploads/cruises/" . $cruise->image ?>' />
@@ -228,7 +230,7 @@ require APPROOT . '/views/includes/header.php';
                         <h3 class="text-md font-semibold text-cyan-900 sm:text-lg">
                             AVG PER PERSON
                         </h3>
-                        <a id="book" type="button" data-modal-toggle="reservation-modal" data-modal-target="reservation-modal" class="inline-flex justify-center px-4 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700  cursor-pointer hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
+                        <a id="book" type="button" href="<?php echo URLROOT . '/pages/reservations/' . $cruise->cruise_id ?>" class="inline-flex justify-center px-4 py-2.5 bg-orange-500 text-white font-medium text-xs leading-normal uppercase rounded shadow-md hover:bg-orange-700  cursor-pointer hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">
 
                             Book now
 
@@ -238,6 +240,7 @@ require APPROOT . '/views/includes/header.php';
                         </a>
                     </div>
                 </div>
+          
             <?php endforeach; ?>
 
 

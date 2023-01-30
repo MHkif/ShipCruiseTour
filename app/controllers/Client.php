@@ -201,7 +201,54 @@ class Client extends Controller
     redirect('client/login');
   }
 
-  public function reserveCruise(){
+  public function reserveCruise($data)
+  {
+    $id = $data[0];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+      // print_r($id);
+      // exit;
+
+      $params = [
+        'user_id' => $_SESSION['user_id'],
+        'reservePrice' => trim($_POST['price']),
+        'cruiseId' => $id,
+        'room_id' => trim($_POST['room_id'])
+
+      ];
+
+      $data = [];
+
+      $result = $this->clientModel->reserve($params);
+      if ($result) {
+        // print_r($result);
+        // exit;
+
+        redirect('pages/cruise');
+        // die(print_r($result));
+      } else {
+        redirect('pages/cruise');
+      }
+    } else {
+      die('Here We Go Again');
+    }
+  }
+
+
+
+
+
+  public function cancelation($data)
+  {
+    
+    $id = $data[0];
+
+    $result = $this->clientModel->cancelReservation($id);
+    if ($result) {
+
+      redirect('pages/myRaservations');
+    } else {
+      redirect('pages/myRaservations');
+    }
   }
 }

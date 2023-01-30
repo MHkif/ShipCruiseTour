@@ -16,7 +16,7 @@ class DataModel
         $this->db->query($sql);
 
         $results = $this->db->resultSet();
-        
+
         return $results;
     }
 
@@ -36,9 +36,19 @@ class DataModel
         return $results;
     }
 
+    public function getReservations()
+    {
+        $sql = "SELECT res.* ,  r.* , c.* FROM reservation res  INNER JOIN room r ON r.id = res.room_id INNER JOIN  cruise c ON res.cruise_id = c.id";
+        $this->db->query($sql);
+
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
     public function getCruises()
     {
-        $sql = "SELECT cruise.id as 'cruise_id' , cruise.name , cruise.price , cruise.image , cruise.nights_number , cruise.depart_date , cruise.ship_id ,port.id, port.name as'depart_port', port.country, itinerary.id, itinerary.name as 'itinerary_name', ship.id , ship.name as 'ship_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port on cruise.port_id = port.id inner join itinerary on cruise.itinerary_id = itinerary.id ";
+        $sql = "SELECT cruise.id as 'cruise_id' , cruise.name , cruise.price , cruise.image , cruise.nights_number , cruise.depart_date , cruise.ship_id ,port.id  as 'port_Id', port.name as'depart_port', port.country, itinerary.id as 'itinerary_Id ', itinerary.name as 'itinerary_name', ship.id as 'ship_Id', ship.name as 'ship_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port on cruise.port_id = port.id inner join itinerary on cruise.itinerary_id = itinerary.id ";
 
 
         $this->db->query($sql);
@@ -51,11 +61,25 @@ class DataModel
     public function getRoomData()
     {
 
-        $sql = "SELECT room.id as 'room_id', ship.id as 'shipTable_id', room_type.id as 'type_id', room.room_number as 'room_num', room_type.name as 'type_name', room_type.price as 'room_price', room_type.capacity as 'room_capacity', ship.name as 'shipName'  FROM `room` INNER JOIN room_type ON room.room_type_id = room_type.id INNER JOIN ship ON room.ship_id = ship.id";
+        $sql = "SELECT room.id as 'room_id', ship.id as 'shipTable_id', room_type.id as 'type_id', room.room_number as 'room_num', room_type.name as 'type_name', room_type.price as 'room_price', room_type.capacity as 'room_capacity', ship.name as 'shipName'  FROM `room` INNER JOIN room_type ON room.room_type_id = room_type.id INNER JOIN ship ON ship.id = 2;";
         $this->db->query($sql);
 
         $results = $this->db->resultSet();
 
         return $results;
+    }
+
+    public function getCruiseById($id)
+    {
+        // print_r($data);
+        // exit;
+        $sql = "SELECT  cruise.id as 'cruise_id' , cruise.name , cruise.price , cruise.image , cruise.nights_number , cruise.depart_date , cruise.ship_id ,port.id  as 'port_Id', port.name as'depart_port', port.country, itinerary.id as 'itinerary_Id ', itinerary.name as 'itinerary_name', ship.id as 'ship_Id', ship.name as 'ship_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port on cruise.port_id = port.id inner join itinerary on cruise.itinerary_id = itinerary.id AND cruise.id  = :id";
+        $this->db->query($sql);
+
+        $this->db->bind(':id', $id);
+
+        $row = $this->db->single();
+
+        return $row;
     }
 }

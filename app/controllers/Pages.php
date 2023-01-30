@@ -21,6 +21,7 @@ class Pages extends Controller
     $this->ports = $this->dataModel->getData("port");
     $this->itinerary = $this->dataModel->getData("itinerary");
     $this->cruises =  $this->dataModel->getCruises();
+
     $this->destinations  = $this->dataModel->getData("destinations");
   }
 
@@ -60,5 +61,35 @@ class Pages extends Controller
     ];
 
     $this->view('pages/destinations', $data);
+  }
+
+
+  public function myRaservations()
+  {
+
+
+    $reservations = $this->dataModel->getReservations();
+    $data = [
+      'reservations' => $reservations,
+    ];
+    $this->view('pages/myRaservations', $data);
+  }
+
+  public function reservations($param)
+  {
+    $id = $param[0];
+
+
+    $cruise =  $this->model("DataModel")->getCruiseById($id);
+
+
+    $data = [
+      'cruise' => $cruise,
+      'rooms' => $this->rooms,
+      'ports' => $this->ports,
+      'ships' => $this->ships
+    ];
+
+    $this->view('pages/reservations', $data, 'formLayout');
   }
 }

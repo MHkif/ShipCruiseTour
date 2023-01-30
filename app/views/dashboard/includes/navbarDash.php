@@ -50,6 +50,7 @@
                     <li class="text-dark text-md hover:text-orange-400 cursor-pointer py-4">
                         <a href="<?php echo URLROOT ?>/pages/destinations">Destinations</a>
                     </li>
+                   
 
                     <?php if (isset($_SESSION['role'])) : ?>
                         <?php if ($_SESSION['role']) : ?>

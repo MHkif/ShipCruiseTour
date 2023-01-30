@@ -39,8 +39,9 @@ class Admin extends Controller
       redirect('pages/');
     }
 
+    $reservations = $this->dataModel->getReservations();
     $data = [
-      'title' => SITENAME,
+      'reservations' => $reservations,
     ];
 
     $this->view('admin/reservations', $data);
@@ -152,18 +153,6 @@ class Admin extends Controller
     $this->view('admin/roomPanel', $data);
   }
 
-  public function settings()
-  {
-    if (!isAdminLoggedIn()) {
-      redirect('pages/');
-    }
-
-    $data = [
-      'title' => SITENAME,
-    ];
-
-    $this->view('admin/settings', $data);
-  }
 
 
 
