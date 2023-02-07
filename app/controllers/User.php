@@ -3,6 +3,7 @@ class User extends Controller
 {
   private $userModel;
   private $dataModel;
+  private $cruiseModel;
   private $rooms;
   private $ships;
   private $ports;
@@ -13,6 +14,7 @@ class User extends Controller
 
     $this->userModel = $this->model('Users');
     $this->dataModel = $this->model('DataModel');
+    $this->cruiseModel = $this->model('CruiseModel');
     $this->ships = $this->dataModel->getData("ship");
     $this->ports = $this->dataModel->getData("port");
     $this->destinations  = $this->dataModel->getData("destinations");
@@ -152,13 +154,13 @@ class User extends Controller
 
       // Check for user/email
       if ($this->userModel->findUserByEmail($data['email'])) {
-        var_dump('User Found');
+        // die('User Found');
         // Here we have a user but we need to check his password
 
       } else {
         // User not found
         $data['email_err'] = 'User Not Found';
-        var_dump('User Not Found Redirecting to pages');
+        // die('User Not Found Redirecting to pages');
         // here you have to passe data Not Found
         // redirect('pages');
       }
@@ -175,14 +177,14 @@ class User extends Controller
           $this->createUserSession($loggedInUser);
         } else {
           $data['password_err'] = 'Password incorrect';
-          var_dump('Password incorrect');
+          // die('Password incorrect');
           // here you have to passe data Password incorrect
           // redirect('pages');
         }
       } else {
         // Load view with errors
         // $this->view('admin/login', $data);
-        var_dump('Email & Password  incorrect');
+        // die('Email & Password  incorrect');
         // redirect('pages/');
         // Show Modal
       }
@@ -206,29 +208,29 @@ class User extends Controller
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       $params = [
-        'destination' => trim($_POST['destination']),
+        // 'destination' => trim($_POST['destination']),
         'port' => trim($_POST['port']),
-        'cruiseDate' => trim($_POST['cruiseDate']),
+        'cruiseDate' => $_POST['cruiseDate'],
 
       ];
 
       $data = [];
 
-      if (!empty($params['destination']) && !empty($params['port']) && !empty($params['cruiseDate'])) {
-        // die(print_r($data));
+      if (!empty($params['port']) && !empty($params['cruiseDate'])) {
+        // die(print_r($params));
 
-        if ($this->dataModel->SearchCruises($params)) {
+        if ($this->cruiseModel->SearchCruises($params)) {
           // die('HOLLA');
-          $cruises = $this->dataModel->SearchCruises($params);
+          $cruises = $this->cruiseModel->SearchCruises($params);
 
           $data = [
             'cruises' => $cruises,
-            'rooms' => $this->rooms,
-            'destinations' => $this->destinations,
+            
+            // 'destinations' => $this->destinations,
             'ports' => $this->ports,
             'ships' => $this->ships
           ];
-          // die(print_r($this->rooms));
+          // die(print_r($cruises));
           $this->view('pages/cruise', $data);
           // die(print_r($result));
         } else {

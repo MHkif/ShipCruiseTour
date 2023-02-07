@@ -17,7 +17,7 @@ class CruiseModel
     {
 
 
-        $this->db->query('INSERT INTO '.$this->tableName .' (`name`, `price`, `image`, `nights_number`, `depart_date`, `ship_id`, `port_id`, `itinerary_id`)
+        $this->db->query('INSERT INTO ' . $this->tableName . ' (`name`, `price`, `image`, `nights_number`, `depart_date`, `ship_id`, `port_id`, `itinerary_id`)
                  VALUES (:name,:price,:image, :nights, :dep_date, :ship_id, :port, :itinerary)');
 
 
@@ -40,7 +40,7 @@ class CruiseModel
         }
     }
 
-   
+
     public function delete($id)
     {
         // die($this->tableName);
@@ -56,5 +56,63 @@ class CruiseModel
         } else {
             return false;
         }
+    }
+
+    public function getRoomTypes()
+    {
+        $this->db->query('SELECT * FROM room_type');
+
+        if ($row = $this->db->resultSet()) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    public function getCruise($id)
+    {
+        $this->db->query('SELECT * FROM cruise WHERE id = :id');
+        $this->db->bind(':id', $id);
+
+
+        $row = $this->db->single();
+
+        if ($row) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    public function searchCruises($data)
+    {
+        // $sql = "SELECT cruise.*, port.id, port.name as'depart_port', port.country, itinerary.id, itinerary.name as 'itinerary_name', ship.id , ship.name as 'ship_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port
+        //  on cruise.port_id = port.id inner join itinerary on cruise.itinerary_id = itinerary.id 
+        //  OR  port.id = :port OR cruise.depart_date >= :cruiseDate  ";
+        $sql = "SELECT
+         cruise.*,
+         PORT.id,
+         PORT.name AS 'depart_port',
+         PORT.country,
+         itinerary.id,
+         itinerary.name AS 'itinerary_name',
+         ship.id,
+         ship.name AS 'ship_name'
+     FROM
+         cruise
+     INNER JOIN ship ON cruise.ship_id = ship.id
+     INNER JOIN PORT ON cruise.port_id = PORT.id
+     INNER JOIN itinerary ON cruise.itinerary_id = itinerary.id WHERE PORT.id = :port OR cruise.depart_date >= :cruiseDate
+     GROUP BY
+         cruise.id";
+
+
+        $this->db->query($sql);
+        $this->db->bind(':port', $data['port']);
+        $this->db->bind(':cruiseDate', $data['cruiseDate']);
+
+        $results = $this->db->resultSet();
+        // die(print_r($results));
+        return $results;
     }
 }

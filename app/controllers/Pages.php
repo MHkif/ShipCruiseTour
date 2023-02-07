@@ -39,9 +39,9 @@ class Pages extends Controller
     $this->view('pages/index', $data);
   }
 
+
   public function cruise()
   {
-
     $data = [
       'cruises' => $this->cruises,
       'rooms' => $this->rooms,
@@ -68,7 +68,8 @@ class Pages extends Controller
   {
 
 
-    $reservations = $this->dataModel->getReservations();
+    $reservations = $this->dataModel->getUserReservations($_SESSION['user_id']);
+    // die(print_r($reservations));
     $data = [
       'reservations' => $reservations,
     ];

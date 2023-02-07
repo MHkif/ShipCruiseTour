@@ -5,6 +5,8 @@ class Client extends Controller
 {
   private $clientModel;
   private $dataModel;
+  private $reservationModel;
+  private $cruiseModel;
   private $ships;
   private $rooms;
   private $ports;
@@ -15,6 +17,8 @@ class Client extends Controller
   {
     $this->dataModel = $this->model('DataModel');
     $this->clientModel = $this->model('Clients');
+    $this->reservationModel = $this->model('ReservationModel');
+    $this->cruiseModel = $this->model('CruiseModel');
     $this->ships = $this->dataModel->getData("ship");
     $this->roomType = $this->dataModel->getData("room_type");
     $this->rooms = $this->dataModel->getRoomData();
@@ -201,54 +205,91 @@ class Client extends Controller
     redirect('client/login');
   }
 
-  public function reserveCruise($data)
+  public function myRaservations()
   {
-    $id = $data[0];
+
+    $reservations = $this->dataModel->getUserReservations($_SESSION['client_id']);
+    $data = [
+      'reservations' => $reservations,
+    ];
+    $this->view('pages/myRaservations', $data);
+  }
+
+  public function reservations($cruise_id)
+  {
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-      // print_r($id);
+      $reservation_price = $this->reservationModel->getWholePrice($cruise_id, $_POST['type_of_room']);
+      // var_dump($_POST['cruise_id']);
       // exit;
-
-      $params = [
-        'user_id' => $_SESSION['user_id'],
-        'reservePrice' => trim($_POST['price']),
-        'cruiseId' => $id,
-        'room_id' => trim($_POST['room_id'])
-
+      $data = [
+        'price' => $reservation_price,
+        'cruise_id' => $cruise_id,
+        'type_of_room' => $_POST['type_of_room'],
+        'user_id' => $_SESSION['user_id']
       ];
 
-      $data = [];
+      $target_ship_id = $this->reservationModel->getShipId($data['cruise_id']);
 
-      $result = $this->clientModel->reserve($params);
-      if ($result) {
-        // print_r($result);
-        // exit;
 
-        redirect('pages/cruise');
-        // die(print_r($result));
+      $room_data = [
+        'type_of_room' => $_POST['type_of_room'],
+        'ship_id' => $target_ship_id
+      ];
+
+
+
+
+      if (!$this->reservationModel->getShipCapacity($data['cruise_id'])) {
+       
+        if ($this->reservationModel->add($data)) {
+          if ($this->reservationModel->increaseShip($data['cruise_id'])) {
+            $room_number = $this->reservationModel->getReservedRooms($target_ship_id);
+            $room_data['room_number'] = $room_number;
+            if ($this->reservationModel->createRoomAfterBooking($room_data)) {
+              flash('message', 'Booked With Success');
+              redirect('pages/myRaservations');
+            }
+          }
+        } else {
+          flash('message', 'Error Booking!', 'alert alert-danger');
+          redirect('pages/myRaservations');
+        }
       } else {
-        redirect('pages/cruise');
+        flash('message', 'This Ship is Full', 'alert alert-danger');
+        redirect('pages/myRaservations');
       }
     } else {
-      die('Here We Go Again');
+      $cruise = $this->cruiseModel->getCruise($cruise_id);
+      $room_types = $this->cruiseModel->getRoomTypes();
+      $data = [
+        'room_types' => $room_types,
+        'cruise' => $cruise
+      ];
+
+      $this->view('pages/reservations', $data);
     }
   }
 
 
-
-
-
-  public function cancelation($data)
+  public function cancel($reservation_id)
   {
-    
-    $id = $data[0];
-
-    $result = $this->clientModel->cancelReservation($id);
-    if ($result) {
-
-      redirect('pages/myRaservations');
-    } else {
-      redirect('pages/myRaservations');
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+      if ($this->reservationModel->getShipIdBeforeDeletingUserReservation($reservation_id) != false) {
+        $ship_id = $this->reservationModel->getShipIdBeforeDeletingUserReservation($reservation_id);
+        if ($this->reservationModel->cancelUserReservation($reservation_id)) {
+          flash('message', 'Canceled With Success');
+          redirect('pages/myRaservations');
+          if ($this->reservationModel->decreaseShip($ship_id)) {
+            // echo json_encode(['success' => 'canceled!']);
+          }
+        } else {
+          flash('message', 'Out of Date!', 'alert alert-danger');
+          redirect('pages/myRaservations');
+          // echo json_encode(['error' => 'out of date!']);
+        }
+      }
     }
   }
 }

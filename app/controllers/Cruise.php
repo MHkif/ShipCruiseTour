@@ -97,9 +97,8 @@ class Cruise extends Controller
     }
 
 
-    public function deleteCruise($data)
+    public function deleteCruise($id)
     {
-        $id = $data[0];
 
         if (!empty($id)) {
             // die('INSIDE :' . $id);

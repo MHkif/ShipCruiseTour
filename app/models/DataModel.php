@@ -38,7 +38,7 @@ class DataModel
 
     public function getReservations()
     {
-        $sql = "SELECT res.* ,  r.* , c.* FROM reservation res  INNER JOIN room r ON r.id = res.room_id INNER JOIN  cruise c ON res.cruise_id = c.id";
+        $sql = "SELECT * FROM reservation";
         $this->db->query($sql);
 
         $results = $this->db->resultSet();
@@ -81,5 +81,36 @@ class DataModel
         $row = $this->db->single();
 
         return $row;
+    }
+
+    public function getUserReservations($user_id)
+    {
+        $this->db->query("SELECT res.*, c.name, c.id as 'cruise_id', c.ship_id, nav.id as'shipId' , nav.name as 'ShipName', room.room_number FROM reservation  res INNER JOIN cruise  c ON res.cruise_id = c.id INNER JOIN ship nav ON c.ship_id = nav.id
+        INNER JOIN room ON nav.id = room.ship_id WHERE res.user_id = :user_id
+    GROUP BY res.id");
+        $this->db->bind(':user_id', $user_id);
+        $result = $this->db->resultSet();
+
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function cancelReservation($id)
+    {
+        // die($id);
+        // $sql = "";
+
+
+        $this->db->query('DELETE FROM reservation WHERE cruise_id in (SELECT id FROM cruise WHERE DATEDIFF(depart_date, CURDATE()) > 2) AND id = :id');
+        $this->db->bind(':id', $id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

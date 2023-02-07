@@ -73,9 +73,9 @@ class Ship extends Controller
         }
     }
 
-    public function deleteShip($data)
+    public function deleteShip($id)
     {
-        $id = $data[0];
+
 
         if (!empty($id)) {
             // die('INSIDE :' . $id);

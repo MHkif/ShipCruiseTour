@@ -69,9 +69,9 @@ class Port extends Controller
         }
     }
 
-    public function deletePort($data)
+    public function deletePort($id)
     {
-        $id = $data[0];
+
 
         if (!empty($id)) {
             // die('INSIDE :' . $id);

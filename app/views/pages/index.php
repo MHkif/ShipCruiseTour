@@ -5,7 +5,7 @@ require APPROOT . '/views/includes/header.php';
 <!-- Hero section -->
 
 
-<div class="h-auto w-full bg-center  bg-cover flex flex-col justify-center  md:h-screen " style="background-image: url('<?php echo URLROOT ?>./src/img/b1.jpg');
+<div class="h-auto w-full bg-center bg-no-reapet  bg-cover flex flex-col justify-center  md:h-screen " style="background-image: url('<?php echo URLROOT ?>./src/img/b1.jpg');
 font-family: 'Prosto One', cursive;">
 
     <div class="h-auto backdrop-grayscale-0 bg-blue-600/50 md:h-screen w-full bg-black-50 flex flex-col justify-center">
@@ -337,6 +337,8 @@ font-family: 'Prosto One', cursive;">
         <?php endforeach ?>
     </div>
 </section>
+
+
 
 <!-- Carousel -->
 

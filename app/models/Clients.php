@@ -96,16 +96,5 @@ class Clients extends UserModel
     }
   }
 
-  public function cancelReservation($id)
-  {
-    // die($id);
-    $sql = "DELETE FROM reservation WHERE cruise_id in (SELECT id FROM cruise WHERE DATEDIFF(cruise.depart_date, CURDATE()) > 2) AND id = ".$id;
-    $this->db->query($sql);
-    // $this->db->bind(":ID", $id);
-    if ($this->db->execute()) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
 }

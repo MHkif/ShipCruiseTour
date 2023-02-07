@@ -5,13 +5,13 @@
 
     <div class="mx-auto container-fluid py-16 px-3">
 
-        <div class="w-full flex flex-col flex-wrap sm:grid grid-cols-2 md:grid-cols-3 justify-items-center content-center lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-10" >
+        <div class="w-full flex flex-col flex-wrap sm:grid grid-cols-2 md:grid-cols-3 justify-items-center content-center lg:grid-cols-3 xl:grid-cols-4 md:gap-8 gap-10">
 
             <div class="flex flex-col flex-shrink-0" style="font-family: 'Poppins', sans-serif;">
                 <div class="dark:text-white">
                     <div class="flex" aria-label="Home" role="img">
                         <img class="cursor-pointer -my-6 w-1 sm:w-auto" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg1.svg" alt="logo" />
-                        <p class="text-md lg:text-lg font-bold text-dark dark:text-white"  style="font-family: 'Prosto One', cursive;">RoyalNorth</p>
+                        <p class="text-md lg:text-lg font-bold text-dark dark:text-white" style="font-family: 'Prosto One', cursive;">RoyalNorth</p>
                     </div>
                 </div>
                 <p class="text-sm leading-none text-gray-800 mt-4 dark:text-white">Copyright © 2023 RoyalNorth</p>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="flex flex-col" style="font-family: 'Poppins', sans-serif;">
-                <h2 class="text-lg font-semibold leading-4 text-gray-800 dark:text-white" style="font-family: 'Prosto One', cursive;" >Cruises</h2>
+                <h2 class="text-lg font-semibold leading-4 text-gray-800 dark:text-white" style="font-family: 'Prosto One', cursive;">Cruises</h2>
                 <a href="javascript:void(0)" class="focus:outline-none focus:underline hover:text-orange-500 text-base leading-4 mt-6 text-gray-600 font-thin dark:text-white cursor-pointer">2023 - 2024</a>
                 <a href="javascript:void(0)" class="focus:outline-none focus:underline hover:text-orange-500 text-base leading-4 mt-6 text-gray-600 font-thin dark:text-white cursor-pointer">Holiday Cruises</a>
                 <a href="javascript:void(0)" class="focus:outline-none focus:underline hover:text-orange-500 text-base leading-4 mt-6 text-gray-600 font-thin dark:text-white cursor-pointer">Family Vacations</a>
@@ -49,7 +49,7 @@
                 <a href="javascript:void(0)" class="focus:outline-none focus:underline hover:text-orange-500 text-base leading-4 mt-6 text-gray-600 font-thin dark:text-white cursor-pointer">RoyalNorth Blog</a>
 
             </div>
-            <div class="flex flex-col"  style="font-family: 'Poppins', sans-serif;">
+            <div class="flex flex-col" style="font-family: 'Poppins', sans-serif;">
                 <h2 class="text-base font-semibold leading-4 text-gray-800 dark:text-white" style="font-family: 'Prosto One', cursive;">Destinations</h2>
                 <a href="javascript:void(0)" class="focus:outline-none focus:underline hover:text-orange-500 text-base leading-4 mt-6 text-gray-600 font-thin dark:text-white cursor-pointer">Perfect Day At Nador Rif</a>
                 <a href="javascript:void(0)" class="focus:outline-none focus:underline hover:text-orange-500 text-base leading-4 mt-6 text-gray-600 font-thin dark:text-white cursor-pointer">Marchica North Morocco</a>
@@ -100,6 +100,8 @@
 </footer>
 
 <!-- <script src="https://unpkg.com/flowbite@1.5.5/dist/flowbite.js"></script> -->
+<script src="<?php echo URLROOT ?>/js/pagination.js"></script>
+<link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.css" />
 </body>
 
 </html>

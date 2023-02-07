@@ -42,7 +42,7 @@
       $this->params = $url ? array_values($url) : [];
 
       // Call a callback with array of params
-      call_user_func([$this->currentController, $this->currentMethod], $this->params);
+      call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
     public function getUrl(){

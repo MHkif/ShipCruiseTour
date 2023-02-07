@@ -1,7 +1,8 @@
 <?php
 
-require APPROOT . '/views/dashboard/includes/headerDash.php';
+require APPROOT . '/views/includes/header.php';
 ?>
+
 
 
 
