@@ -226,7 +226,7 @@ class Client extends Controller
       $data = [
         'price' => $reservation_price,
         'cruise_id' => $cruise_id,
-        'type_of_room' => $_POST['type_of_room'],
+        // 'type_of_room' => $_POST['type_of_room'],
         'user_id' => $_SESSION['user_id']
       ];
 
@@ -242,12 +242,17 @@ class Client extends Controller
 
 
       if (!$this->reservationModel->getShipCapacity($data['cruise_id'])) {
-       
-        if ($this->reservationModel->add($data)) {
+
+        $room_number = $this->reservationModel->getReservedRooms($target_ship_id);
+        $room_data['room_number'] = $room_number;
+        if ($room_id = $this->reservationModel->createRoomAfterBooking($room_data)) {
+          // if ($this->reservationModel->add($data)) {
           if ($this->reservationModel->increaseShip($data['cruise_id'])) {
-            $room_number = $this->reservationModel->getReservedRooms($target_ship_id);
-            $room_data['room_number'] = $room_number;
-            if ($this->reservationModel->createRoomAfterBooking($room_data)) {
+            // $room_number = $this->reservationModel->getReservedRooms($target_ship_id);
+            // $room_data['room_number'] = $room_number;
+            // if ($this->reservationModel->createRoomAfterBooking($room_data)) {
+            $data['room_id'] = $room_id;
+            if ($this->reservationModel->add($data)) {
               flash('message', 'Booked With Success');
               redirect('pages/myRaservations');
             }

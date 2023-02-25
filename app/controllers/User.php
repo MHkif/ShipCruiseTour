@@ -27,10 +27,7 @@ class User extends Controller
   {
     // Check for POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Process form
 
-
-      // Sanitize POST data
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
       // Init data
@@ -39,7 +36,7 @@ class User extends Controller
         'last_name' => trim($_POST['last_name']),
         'email' => trim($_POST['email']),
         'password' => trim($_POST['password']),
-        'confirm_password' => trim($_POST['confirm_password']),
+        'confirm_password' => trim($_POST['confirm']),
         'first_name_err' => '',
         'last_name_err' => '',
         'email_err' => '',
@@ -47,160 +44,69 @@ class User extends Controller
         'confirm_password_err' => ''
       ];
 
-      // Validate Email
-      if (empty($data['email'])) {
-        $data['email_err'] = 'Please enter email';
-      } else {
-        // Check email
-        if ($this->userModel->findUserByEmail($data['email'])) {
-          $data['email_err'] = 'Email is already taken';
-          echo "Email is already taken";
-        }
-      }
 
-      // Validate Name
-      if (empty($data['first_name'])) {
-        $data['first_name_err'] = 'Please enter your First Name';
+      if ($this->userModel->findUserByEmail($data['email'])) {
+        $data['email_err'] = 'Email is already taken';
+        // die($data['email_err']);
       }
-      if (empty($data['last_name'])) {
-        $data['last_name_err'] = 'Please enter your Last Name';
-      }
-
-      // Validate Password
-      if (empty($data['password'])) {
-        $data['password_err'] = 'Please enter a Password';
-      } elseif (strlen($data['password']) < 6) {
-        $data['password_err'] = 'Password must be at least 6 characters';
-      }
-
-      // Validate Confirm Password
-      if (empty($data['confirm_password'])) {
-        $data['confirm_password_err'] = 'Please Confirm your Password';
-      } else {
-        if ($data['password'] != $data['confirm_password']) {
-          $data['confirm_password_err'] = 'Passwords do not match';
-        }
-      }
-
       // Make sure errors are empty
       if (empty($data['email_err']) && empty($data['first_name_err']) && empty($data['last_name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])) {
-        // Validated
 
-        // Hash Password
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         // Register User
         if ($this->userModel->register($data)) {
-          flash('register_success', 'You are registered and can log in');
-          redirect('pages');
+          redirect('pages/login');
         } else {
-          var_dump('Something went wrong, User Not Registered');
+          die("Not Registred");
+          $this->view('pages/register', $data);
+          // redirect('pages/register');
         }
       } else {
-        // Load view with errors
-        // $this->view('admin/register', $data);
-        var_dump('Something went wrong, Load view with errors');
-        // redirect('pages/');
-        // Show Modal
+        // die("Something missing");
+        $this->view('pages/register', $data);
       }
-    } else {
-      // Init data
-      $data = [
-        'first_name' => '',
-        'last_name' => '',
-        'email' => '',
-        'password' => '',
-        'confirm_password' => '',
-        'first_name_err' => '',
-        'last_name_err' => '',
-        'email_err' => '',
-        'password_err' => '',
-        'confirm_password_err' => ''
-      ];
-      var_dump('Load the Else view, that must be removed');
-      // Load view
-      // $this->view('pages', $data);
     }
   }
 
+
+
   public function login()
   {
-    // Check for POST
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Process form
-      // Sanitize POST data
       $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-      // Init data
+
       $data = [
         'email' => trim($_POST['email']),
         'password' => trim($_POST['password']),
         'email_err' => '',
         'password_err' => '',
+
       ];
-      // print_r($data);
-      // exit;
 
-
-      // Validate Email
-      if (empty($data['email'])) {
-        $data['email_err'] = 'Please enter Email';
-      }
-
-      // Validate Password
-      if (empty($data['password'])) {
-        $data['password_err'] = 'Please enter Password';
-      }
-
-      // Check for user/email
       if ($this->userModel->findUserByEmail($data['email'])) {
-        // die('User Found');
-        // Here we have a user but we need to check his password
 
-      } else {
-        // User not found
-        $data['email_err'] = 'User Not Found';
-        // die('User Not Found Redirecting to pages');
-        // here you have to passe data Not Found
-        // redirect('pages');
-      }
-
-      // Make sure errors are empty
-      if (empty($data['email_err']) && empty($data['password_err'])) {
-        // Validated
-        // Check and set logged in user
-        $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-
-        if ($loggedInUser) {
+        if ($loggedInUser = $this->userModel->login($data['email'], $data['password'])) {
           // Create Session
-          // die('Yes Matched Passwords');
           $this->createUserSession($loggedInUser);
         } else {
-          $data['password_err'] = 'Password incorrect';
-          // die('Password incorrect');
-          // here you have to passe data Password incorrect
-          // redirect('pages');
+          $data['password_err'] = 'Passowrd Incorrect';
+          // die($data['password_err']);
+          $this->view('pages/login', $data);
+          // redirect('pages/login');
         }
       } else {
-        // Load view with errors
-        // $this->view('admin/login', $data);
-        // die('Email & Password  incorrect');
-        // redirect('pages/');
-        // Show Modal
+        $data['email_err'] = 'This user does not exist';
+        // die($data['email_err']);
+        $this->view('pages/login', $data);
+        // redirect('pages/login');
       }
-    } else {
-      // Init data
-      $data = [
-        'email' => '',
-        'password' => '',
-        'email_err' => '',
-        'password_err' => '',
-      ];
-
-
-      $this->view('pages', $data);
     }
   }
+
+
 
 
   public function searchCruise()
@@ -225,7 +131,7 @@ class User extends Controller
 
           $data = [
             'cruises' => $cruises,
-            
+
             // 'destinations' => $this->destinations,
             'ports' => $this->ports,
             'ships' => $this->ships
@@ -248,14 +154,14 @@ class User extends Controller
 
   public function createUserSession($user)
   {
-
+    die('Here');
     if ($user->role) {
 
       $_SESSION['role'] = $user->role;
       $_SESSION['admin_id'] = $user->id;
       $_SESSION['admin_email'] = $user->email;
       $_SESSION['admin_name'] = $user->first_name;
-      redirect('admin/dashboard');
+      redirect('admin/cruisePanel');
     } else {
 
       $_SESSION['role'] = $user->role;
@@ -282,3 +188,44 @@ class User extends Controller
     redirect('pages');
   }
 }
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++
+
+// For Register User 
+/*
+
+    // Validate Email
+      // if (empty($data['email'])) {
+      //   $data['email_err'] = 'Please enter email';
+      // } else {
+      //   // Check email
+      //   if ($this->userModel->findUserByEmail($data['email'])) {
+      //     $data['email_err'] = 'Email is already taken';
+      //   }
+      // }
+
+      // Validate Name
+      // if (empty($data['fName'])) {
+      //   $data['fName_err'] = 'Please enter your First Name';
+      // }
+      // if (empty($data['lName'])) {
+      //   $data['lName_err'] = 'Please enter your Last Name';
+      // }
+
+      // // Validate Password
+      // if (empty($data['password'])) {
+      //   $data['password_err'] = 'Pleae enter Password';
+      // } elseif (strlen($data['password']) < 6) {
+      //   $data['password_err'] = 'Password must be at least 6 characters';
+      // }
+
+      // // Validate Confirm Password
+      // if (empty($data['confirm_password'])) {
+      //   $data['confirm_password_err'] = 'Please Confirm Password';
+      // } else {
+      //   if ($data['password'] != $data['confirm_password']) {
+      //     $data['confirm_password_err'] = 'Passwords do not match';
+      //   }
+      // }
+*/

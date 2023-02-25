@@ -39,9 +39,9 @@ class Ship extends Controller
             // if (empty($data['image'])) {
             //     $data['image_err'] = 'Please enter Ship image';
             // }
-            if (empty($data['places'])) {
-                $data['places_err'] = 'Please enter Places number';
-            }
+            // if (empty($data['places'])) {
+            //     $data['places_err'] = 'Please enter Places number';
+            // }
 
 
 

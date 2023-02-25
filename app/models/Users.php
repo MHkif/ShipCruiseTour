@@ -1,5 +1,5 @@
 <?php
-class Users extends UserModel 
+class Users extends UserModel
 {
   private $db;
 
@@ -31,14 +31,16 @@ class Users extends UserModel
   // Login User
   public function login($email, $password)
   {
+    // die("From User Login Model ");
     $this->db->query('SELECT * FROM users WHERE email = :email');
     $this->db->bind(':email', $email);
 
     $row = $this->db->single();
-
+    die(var_dump(password_verify($password, $row->password)));
     $hashed_password = $row->password;
-    // if (password_verify($password, $hashed_password)) {
-if($hashed_password == $password){
+    if (password_verify($password, $hashed_password)) {
+      // die('here');
+      // if($hashed_password == $password){
       return $row;
     } else {
       return false;
@@ -82,9 +84,9 @@ if($hashed_password == $password){
 
     $row = $this->db->single();
 
-    if($row->role == 1){
+    if ($row->role == 1) {
       return 1;
-    }else{
+    } else {
       return 0;
     }
   }

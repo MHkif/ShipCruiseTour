@@ -12,32 +12,32 @@ class ShipModel
         $this->db = new Database;
         $this->tableName = "ship";
     }
+    public function places_numbers($rooms)
+    {
+        $uno = $duo = $family = floor($rooms / 3);
+        $duo = $duo * 2;
+        $family = $family * 4;
+        $places = $uno + $duo + $family;
+        return $places;
+    }
 
     public function add($data)
     {
-
-
-        $this->db->query('INSERT INTO '. $this->tableName. ' (`name`, `rooms_number`,  `places_number`)
+        $places =  $this->places_numbers($data['room_num']);
+        $this->db->query('INSERT INTO ' . $this->tableName . ' (`name`, `rooms_number`,  `places_number`)
                  VALUES (:name,:rooms,:places)');
-
-
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':rooms', $data['room_num']);
-        $this->db->bind(':places', $data['places']);
-
+        $this->db->bind(':places', $places);
 
         // Execute
         if ($this->db->execute()) {
-
             return true;
         } else {
             return false;
         }
-
-
-
-
     }
+
 
     public function delete($id)
     {

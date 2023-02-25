@@ -31,7 +31,7 @@ class Admin extends Controller
       'title' => SITENAME,
     ];
 
-    $this->view('admin/dashboard', $data);
+    $this->view('admin/cruisePanel', $data);
   }
   public function reservations()
   {

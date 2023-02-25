@@ -28,6 +28,9 @@ class Pages extends Controller
 
   public function index()
   {
+    if (!isLoggedIn()) {
+      redirect('pages/login');
+    }
     $data = [
       'title' => SITENAME,
       'destinations' => $this->destinations,
@@ -38,7 +41,6 @@ class Pages extends Controller
 
     $this->view('pages/index', $data);
   }
-
 
   public function cruise()
   {
@@ -62,7 +64,6 @@ class Pages extends Controller
 
     $this->view('pages/destinations', $data);
   }
-
 
   public function myRaservations()
   {
@@ -92,5 +93,16 @@ class Pages extends Controller
     ];
 
     $this->view('pages/reservations', $data, 'formLayout');
+  }
+
+
+  public function login()
+  {
+    $this->view('pages/login');
+  }
+
+  public function register()
+  {
+    $this->view('pages/register');
   }
 }

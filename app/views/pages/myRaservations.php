@@ -56,7 +56,7 @@
                         <?php echo $reserve->reservation_price ?>
                     </td>
                     <td class="px-6 py-4">
-                        <?php echo $reserve->room_number ?>
+                        <?php echo $reserve->room_num ?>
                     </td>
 
                     <td class="flex items-center px-6 py-4 space-x-3">

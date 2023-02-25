@@ -23,10 +23,10 @@ class ReservationModel
 
     public function add($data)
     {
-        $this->db->query('INSERT INTO reservation (reservation_price , cruise_id , user_id) VALUES (:price , :cruise_id , :user_id)');
+        $this->db->query('INSERT INTO reservation (reservation_price , cruise_id , user_id, room_id) VALUES (:price , :cruise_id , :user_id, :room_id)');
         $this->db->bind(':price', $data['price']);
         $this->db->bind(':cruise_id', $data['cruise_id']);
-        // $this->db->bind(':type_of_room', $data['type_of_room']);
+        $this->db->bind(':room_id', $data['room_id']);
         $this->db->bind(':user_id', $data['user_id']);
 
         if ($this->db->execute()) {
@@ -83,11 +83,11 @@ class ReservationModel
 
         $result = $this->db->single();
 
-        if (empty($result->room_number) || $result->room_number == 0) {
-            return false;
-        } else {
-            return $result->room_number;
-        }
+        // if ( $result->room_number == 0) {
+        //     return false;
+        // } else {
+        return $result->room_number;
+        // }
     }
 
 
@@ -111,8 +111,11 @@ class ReservationModel
         $this->db->bind(':type_of_room', $data['type_of_room']);
         $this->db->bind(':ship_id', $data['ship_id']);
 
+
         if ($this->db->execute()) {
-            return true;
+            $last_id = $this->db->getLastId();
+            return $last_id;
+            // die(var_dump($last_id));
         } else {
             return false;
         }

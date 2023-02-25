@@ -85,8 +85,8 @@ class DataModel
 
     public function getUserReservations($user_id)
     {
-        $this->db->query("SELECT res.*, c.name, c.id as 'cruise_id', c.ship_id, nav.id as'shipId' , nav.name as 'ShipName', room.room_number FROM reservation  res INNER JOIN cruise  c ON res.cruise_id = c.id INNER JOIN ship nav ON c.ship_id = nav.id
-        INNER JOIN room ON nav.id = room.ship_id WHERE res.user_id = :user_id
+        $this->db->query("SELECT res.*, c.name, c.id as 'cruise_id', c.ship_id, nav.id as'shipId' , nav.name as 'ShipName', r.room_number as 'room_num' FROM reservation  res INNER JOIN cruise  c ON res.cruise_id = c.id INNER JOIN ship nav ON c.ship_id = nav.id
+        INNER JOIN room r ON res.room_id = r.id WHERE res.user_id = :user_id
     GROUP BY res.id");
         $this->db->bind(':user_id', $user_id);
         $result = $this->db->resultSet();

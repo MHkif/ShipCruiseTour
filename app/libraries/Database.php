@@ -77,6 +77,10 @@ class Database
     return $this->stmt->exec();
   }
 
+  public function getLastId()
+  {
+    return $this->dbh->lastInsertId();
+  }
   // Get result set as array of objects
   public function resultSet()
   {
@@ -104,7 +108,7 @@ class Database
     $appliedMigrations = $this->getAppliedMigration();
     $newMigrations = [];
     $files = scandir('C:\xampp\htdocs\ShipCruiseTour\migrations');
-    
+
     // echo scandir('C:\xampp\htdocs\ShipCruiseTour\migrations') ? $files : 'Empty';
     // exit;
     $toApplyMigrations = array_diff($files, $appliedMigrations);
@@ -112,7 +116,7 @@ class Database
       if ($migration === "." || $migration === "..") {
         continue;
       }
-      require_once 'C:\xampp\htdocs\ShipCruiseTour\migrations/'. $migration;
+      require_once 'C:\xampp\htdocs\ShipCruiseTour\migrations/' . $migration;
       $className = pathinfo($migration, PATHINFO_FILENAME);
       $instance = new $className();
       echo "Applying migration $migration" . PHP_EOL;
