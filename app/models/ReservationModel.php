@@ -51,10 +51,12 @@ class ReservationModel
 
     public function getShipCapacity($cruise_id)
     {
-        $this->db->query('SELECT * FROM ship WHERE id IN (SELECT ship_id FROM cruise WHERE id = :id)');
+        // die(var_dump($cruise_id));
+        $this->db->query('SELECT * FROM ship WHERE ship.id IN (SELECT ship_id FROM cruise WHERE cruise.id = :id) ');
         $this->db->bind(':id', $cruise_id);
         $result = $this->db->single();
-        if ($result->rooms_number == $result->reserved_rooms) {
+        // die(var_dump($result->reserved_rooms <= $result->places_number ));
+        if ($result->reserved_rooms <= $result->places_number) {
             return true;
         } else {
             return false;
@@ -93,6 +95,7 @@ class ReservationModel
 
     public function decreaseShip($ship_id)
     {
+
         $this->db->query('UPDATE ship SET reserved_rooms = reserved_rooms - 1 WHERE id = :id');
         $this->db->bind(':id', $ship_id);
 
@@ -184,7 +187,8 @@ class ReservationModel
 
     public function getShipIdBeforeDeletingUserReservation($reservation_id)
     {
-        $this->db->query('SELECT id AS "ship_id" FROM cruise WHERE id IN (SELECT cruise_id FROM reservation WHERE id = :id)');
+
+        $this->db->query('SELECT ship_id AS "ship_id" FROM cruise WHERE id IN (SELECT cruise_id FROM reservation WHERE id = :id)');
         $this->db->bind(':id', $reservation_id);
 
         $result = $this->db->single();

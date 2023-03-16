@@ -36,11 +36,11 @@ class Users extends UserModel
     $this->db->bind(':email', $email);
 
     $row = $this->db->single();
-    die(var_dump(password_verify($password, $row->password)));
+    // die(var_dump(password_verify($password, $row->password)));
     $hashed_password = $row->password;
-    if (password_verify($password, $hashed_password)) {
+    // if (password_verify($password, $hashed_password)) {
       // die('here');
-      // if($hashed_password == $password){
+      if($hashed_password == $password){
       return $row;
     } else {
       return false;

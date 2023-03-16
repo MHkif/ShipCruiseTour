@@ -2,7 +2,7 @@
 
 require APPROOT . '/views/includes/header.php';
 ?>
-
+<?php flash("message"); ?>
 <!-- reservation Modal -->
 <div id="reservation-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-screen">
     <div class="relative w-full h-full max-w-md md:h-auto">
@@ -118,45 +118,47 @@ require APPROOT . '/views/includes/header.php';
         <h1 class="max-w-md text-lg font-bold text-center md:text-xl text-gray-800" style="font-family: 'Prosto One', cursive;">
             Choose Your Cruise
         </h1>
-        <form action="<?php echo URLROOT ?>/user/searchCruise" method="POST">
-            <div class="px-4 w-full block md:flex flex-wrap justify-center items-end py-4 gap-6 space-y-4 md:space-y-0 bg-white" style="font-family: 'Poppins', sans-serif;">
+        <div class="px-4 w-full block md:flex flex-wrap justify-center items-end py-4 gap-6 space-y-4 md:space-y-0 bg-white" style="font-family: 'Poppins', sans-serif;">
+
+            <form action="<?php echo URLROOT . '/pages/filterShip' ?>" method="POST">
 
                 <div class="flex flex-col w-full sm:w-96 md:w-44 gap-2">
-                    <label for="select cruise" class="text-base font-medium text-gray-800">Ships</label>
-                    <select name="ship" class="form-select appearance-none block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="ship" aria-label="Default select example" required>
-                        <!-- <option selected disabled >Any Destination</option> -->
-                        <?php foreach ($data['ships'] as $ship) : ?>
+                    <label for="select ship" class="text-base font-medium text-gray-800">Ship</label>
+                    <select onchange="this.form.submit();" name="filterShip" class="form-select appearance-none block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" aria-placeholder="ship" aria-label="Default select example">
+                        <option selected disabled>Select a Ship</option> <?php foreach ($data['ships'] as $ship) : ?>
                             <option value="<?php echo $ship->id ?>"><?php echo $ship->name ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-
+            </form>
+            <form action="<?php echo URLROOT . '/pages/filterPort' ?>" method="POST">
                 <div class="flex flex-col w-full sm:w-96 md:w-44 gap-2">
-                    <label for="select cruise" class="text-base font-medium text-gray-800">Departing From</label>
-                    <select name="port" class="form-select appearance-none block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" placeholder="Departing From" aria-label="Departing From" required>
-                        <!-- <option selected disabled>Departing From</option> -->
-                        <?php foreach ($data['ports'] as $port) : ?>
+                    <label for="select cruise" class="text-base font-medium text-gray-800">Port</label>
+                    <select onchange="this.form.submit();" name="filterPort" class="form-select appearance-none block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white border border-solid border-gray-300 rounded" placeholder="Departing From" aria-label="Departing From">
+                        <option selected disabled>Select a Port</option> <?php foreach ($data['ports'] as $port) : ?>
                             <option value="<?php echo $port->id ?>"><?php echo $port->name ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-
+            </form>
+            <form action="<?php echo URLROOT . '/pages/filterMonth' ?>" method="POST">
                 <div class=" flex flex-col w-full sm:w-96 md:w-44 gap-2">
                     <label for="select date" class="text-base font-medium text-gray-800">Cruise Date</label>
-                    <input name="cruiseDate" type="date" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="dd/mm/yy" required>
+                    <input onchange="this.form.submit();" name="filterDate" type="date" class="form-control block w-full px-3 py-1.5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="dd/mm/yy">
 
                 </div>
+            </form>
 
-                <div class="flex space-x-2 justify-center ">
-                    <button type="sumbit" class=" w-full sm:w-auto inline-flex justify-center px-4 py-1.5 bg-orange-500 text-white font-medium text-sm leading-normal uppercase rounded shadow-md hover:bg-orange-700 hover:shadow-lg focus:bg-orange-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-600 active:shadow-lg transition duration-150 ease-in-out">Search</button>
-                </div>
 
-            </div>
 
-        </form>
+        </div>
+
 
     </div>
 </section>
+
+
+
 
 
 <!-- Cruises -->
@@ -187,6 +189,12 @@ require APPROOT . '/views/includes/header.php';
                                     ROUNDTRIP FROM : &nbsp;
                                 </h4>
                                 <span class="text-sm text-gray-500"> <?php echo $cruise->depart_port ?>.</span>
+                            </div>
+                            <div class="flex flex-col  baseline sm:flex-row">
+                                <h4 class="text-sm font-semibold text-gray-600 md:text-md">
+                                    DEPARTURE DATE : &nbsp;
+                                </h4>
+                                <span class="text-sm text-gray-500"> <?php echo $cruise->depart_date ?>.</span>
                             </div>
                             <div class="flex flex-col baseline sm:flex-row">
                                 <h4 class="text-sm font-semibold text-gray-600 md:text-md">VISITING : &nbsp; </h4>

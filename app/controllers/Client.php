@@ -218,10 +218,12 @@ class Client extends Controller
   public function reservations($cruise_id)
   {
 
+
+    $cruise = $this->cruiseModel->getCruise($cruise_id);
+    // die(var_dump($cruise->id));
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       $reservation_price = $this->reservationModel->getWholePrice($cruise_id, $_POST['type_of_room']);
-      // var_dump($_POST['cruise_id']);
       // exit;
       $data = [
         'price' => $reservation_price,
@@ -230,7 +232,7 @@ class Client extends Controller
         'user_id' => $_SESSION['user_id']
       ];
 
-      $target_ship_id = $this->reservationModel->getShipId($data['cruise_id']);
+      $target_ship_id = $this->reservationModel->getShipId($cruise_id);
 
 
       $room_data = [
@@ -240,8 +242,8 @@ class Client extends Controller
 
 
 
-
-      if (!$this->reservationModel->getShipCapacity($data['cruise_id'])) {
+      // die(var_dump($cruise_id));
+      if ($this->reservationModel->getShipCapacity($cruise_id)) {
 
         $room_number = $this->reservationModel->getReservedRooms($target_ship_id);
         $room_data['room_number'] = $room_number;
@@ -283,14 +285,13 @@ class Client extends Controller
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       if ($this->reservationModel->getShipIdBeforeDeletingUserReservation($reservation_id) != false) {
         $ship_id = $this->reservationModel->getShipIdBeforeDeletingUserReservation($reservation_id);
-        if ($this->reservationModel->cancelUserReservation($reservation_id)) {
-          flash('message', 'Canceled With Success');
+        if ($this->reservationModel->cancelUserReservation($reservation_id) && $this->reservationModel->decreaseShip($ship_id)) {
+          // flash('message', 'Canceled With Success');
+          // die('Canceled With Success');
           redirect('pages/myRaservations');
-          if ($this->reservationModel->decreaseShip($ship_id)) {
-            // echo json_encode(['success' => 'canceled!']);
-          }
         } else {
           flash('message', 'Out of Date!', 'alert alert-danger');
+
           redirect('pages/myRaservations');
           // echo json_encode(['error' => 'out of date!']);
         }

@@ -21,11 +21,36 @@
 
   <title><?php echo SITENAME; ?></title>
 
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: white;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(249 115 22);
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(234 88 12);
+    }
+  </style>
+  <link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.css" />
 </head>
 
-<body >
+<body class="h-screen ">
   <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
 
   <?php require APPROOT . '/views/includes/navbar.php'; ?>
-
-  

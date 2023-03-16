@@ -16,7 +16,7 @@ class Admin extends Controller
     $this->roomType = $this->dataModel->getData("room_type");
     $this->rooms = $this->dataModel->getRoomData();
     $this->ports = $this->dataModel->getData("port");
-    $this->itinerary = $this->dataModel->getData("itinerary");
+    // $this->itinerary = $this->dataModel->getData("itinerary");
   }
 
 

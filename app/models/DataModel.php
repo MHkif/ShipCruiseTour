@@ -48,7 +48,7 @@ class DataModel
 
     public function getCruises()
     {
-        $sql = "SELECT cruise.id as 'cruise_id' , cruise.name , cruise.price , cruise.image , cruise.nights_number , cruise.depart_date , cruise.ship_id ,port.id  as 'port_Id', port.name as'depart_port', port.country, itinerary.id as 'itinerary_Id ', itinerary.name as 'itinerary_name', ship.id as 'ship_Id', ship.name as 'ship_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port on cruise.port_id = port.id inner join itinerary on cruise.itinerary_id = itinerary.id ";
+        $sql = "SELECT cruise.id as 'cruise_id' , cruise.name , cruise.price , cruise.image , cruise.nights_number , cruise.depart_date, cruise.ship_id ,port.id  as 'port_Id', port.name as'depart_port', port.country, ship.id as 'ship_Id', ship.name as 'ship_name', itinerary.name as 'itinerary_name' from cruise inner join ship on cruise.ship_id = ship.id inner join port on cruise.port_id = port.id  inner join  itinerary ON itinerary.cruise_id = cruise_id AND  itinerary.port_id = port.id WHERE cruise.depart_date > now() group by cruise.id";
 
 
         $this->db->query($sql);

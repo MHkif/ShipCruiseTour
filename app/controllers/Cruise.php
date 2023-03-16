@@ -11,6 +11,8 @@ class Cruise extends Controller
 
     public function createCruise()
     {
+        // die(var_dump($_POST['Itinerary']));
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -25,14 +27,12 @@ class Cruise extends Controller
                 'port' => trim($_POST['port_depart']),
                 'date' => trim($_POST['date_depart']),
                 'nights' => trim($_POST['night_number']),
-                'Itinerary' => trim($_POST['Itinerary']),
                 'name_err' => "",
                 'price_err' => "",
                 'ship_err' => "",
                 'port_err' => "",
                 'date_err' => "",
                 'nights_err' => "",
-                'Itinerary_err' => "",
                 'image_err' => ''
             ];
 
@@ -59,13 +59,16 @@ class Cruise extends Controller
             if (empty($data['nights'])) {
                 $data['nights_err'] = "Please Enter Cruise's Number of nights";
             }
-            if (empty($data['Itinerary'])) {
-                $data['Itinerary_err'] = 'Please Enter Itinerary of Cruise';
-            }
+          
 
 
-            if (empty($data['name_err']) && empty($data['price_err']) && empty($data['ship_err']) && empty($data['image_err']) && empty($data['port_err']) && empty($data['nights_err']) && empty($data['date_err']) && empty($data['Itinerary_err'])) {
+            if (empty($data['name_err']) && empty($data['price_err']) && empty($data['ship_err']) && empty($data['image_err']) && empty($data['port_err']) && empty($data['nights_err']) && empty($data['date_err'])) {
                 // die('Success');
+                $Itinerary = array();
+                foreach ($_POST['Itinerary'] as $i) {
+                    array_push($Itinerary, $i);
+                }
+                $data['Itinerary'] = implode(" , ", $Itinerary);
                 if ($this->cruiseModel->add($data)) {
                     // flash('post_message', 'Product Updated');
                     move_uploaded_file($_FILES['image']["tmp_name"], 'uploads/cruises/' . $data["image"]);
@@ -111,4 +114,5 @@ class Cruise extends Controller
             die("error : EMPTY ID");
         }
     }
+    
 }

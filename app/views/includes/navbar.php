@@ -1,33 +1,11 @@
-<style>
-    /* width */
-    ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: white;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: rgb(249 115 22);
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgb(234 88 12);
-    }
-</style>
-<link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.css" />
+<!--  -->
 
 
-<nav class="bg-white px-2 md:px-4 py-2 ">
+<nav class="bg-white px-2 md:px-4 py-1">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
         <div class="flex items-center" aria-label="Home" role="img" style="font-family: 'Prosto One', cursive;">
             <img class="cursor-pointer w-8 sm:w-auto" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg1.svg" alt="logo" />
-            <p class="ml-2  text-base lg:text-xl font-bold text-dark dark:text-white">RoyalNorth</p>
+            <p class="ml-2  text-lg lg:text-xl font-bold text-dark dark:text-white">RoyalNorth</p>
 
         </div>
 
@@ -38,7 +16,7 @@
                     <a href="<?php echo URLROOT ?>/user/logout" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Logout</a>
 
                 <?php else : ?>
-                    <a href="<?php echo URLROOT . "/pages/login" ?> " class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white"  type="button">Log in</a>
+                    <a href="<?php echo URLROOT . "/pages/login" ?> " class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" type="button">Log in</a>
                     <a href="<?php echo URLROOT . "/pages/register" ?> " class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white" type="button">Sign up</a>
 
                 <?php endif; ?>
@@ -50,29 +28,30 @@
                 </svg>
             </button>
         </div>
-        <div id="mega-menu" class="items-center justify-between hidden w-full text-sm md:flex md:w-auto md:order-1" style="font-family: 'Prosto One', cursive;">
-            <ul class="flex flex-col items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
+        <div id="mega-menu" class="items-center justify-between hidden w-full text-sm md:flex md:w-auto md:order-1">
+            <ul class="flex flex-col items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0" style="font-family: 'Prosto One', cursive;">
                 <?php if (isset($_SESSION['admin_id'])) : ?>
-                    <li class="text-dark text-md hover:text-orange-400  cursor-pointer py-4">
+                    <li class="text-dark text-lg hover:text-orange-400  cursor-pointer py-2">
                         <a href="<?php echo URLROOT ?>/admin/cruisePanel">Dashboard</a>
                     </li>
                 <?php endif ?>
+                <li class="text-dark text-lg hover:text-orange-400  cursor-pointer py-2">
 
-
-                <a href="<?php echo URLROOT ?>/pages">Home</a>
+                    <a href="<?php echo URLROOT ?>/pages">Home</a>
                 </li>
-                <li class="text-dark text-md hover:text-orange-400  cursor-pointer py-4">
+                </li>
+                <li class="text-dark text-lg hover:text-orange-400  cursor-pointer py-2">
                     <a href="<?php echo URLROOT ?>/pages/cruise">Cruise</a>
                 </li>
                 <!-- <li class="text-dark text-md hover:text-orange-400 cursor-pointer py-4">
                         <a href="<?php echo URLROOT ?>/pages/destinations">Destinations</a>
                     </li> -->
                 <?php if (isset($_SESSION['user_id'])) : ?>
-                    <li class="text-dark text-md hover:text-orange-400 cursor-pointer py-4">
+                    <li class="text-dark text-lg hover:text-orange-400 cursor-pointer py-2">
                         <a href="<?php echo URLROOT ?>/pages/myRaservations">Reservations</a>
                     </li>
                 <?php endif ?>
-                <div class="md:hidden flex gap-4 mb-6">
+                <div class="md:hidden flex gap-4 mb-6 mt-2">
                     <?php if (isset($_SESSION['user_id']) or isset($_SESSION['admin_id'])) : ?>
                         <a href="<?php echo URLROOT ?>/user/logout" class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-orange-500 ring-inset  hover:ring-orange-600 hover:ring-0 hover:bg-orange-500 hover:text-white">Logout</a>
 
